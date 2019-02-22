@@ -1,5 +1,4 @@
 EESchema Schematic File Version 4
-LIBS:Multi Chromatic Stimulator-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -17,13 +16,13 @@ $EndDescr
 $Comp
 L maxi_MCU_Module:Arduino_Nano_v3.x A1
 U 1 1 5BB625C1
-P 5200 2400
-F 0 "A1" V 5246 1470 50  0000 R CNN
-F 1 "Arduino_Nano_v3.x" V 5155 1470 50  0000 R CNN
-F 2 "Module:Arduino_Nano" H 5350 1450 50  0001 L CNN
-F 3 "http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf" H 5200 1400 50  0001 C CNN
-	1    5200 2400
-	0    -1   -1   0   
+P 4900 2350
+F 0 "A1" V 4950 2350 50  0000 R CNN
+F 1 "Arduino_Nano_v3.x" V 4850 2700 50  0000 R CNN
+F 2 "Module:Arduino_Nano" H 5050 1400 50  0001 L CNN
+F 3 "http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf" H 4900 1350 50  0001 C CNN
+	1    4900 2350
+	0    1    1    0   
 $EndComp
 $Comp
 L Driver_LED:TLC5947DAP U1
@@ -37,19 +36,7 @@ F 3 "http://www.ti.com/lit/ds/symlink/tlc5947.pdf" H 5300 3900 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	5200 2900 5200 3200
-Wire Wire Line
-	5300 2900 5300 3200
-Wire Wire Line
-	5400 2900 5400 3200
-Wire Wire Line
 	3650 3800 3900 3800
-Wire Wire Line
-	5100 2900 5100 3050
-Wire Wire Line
-	5100 3050 5500 3050
-Wire Wire Line
-	5500 3050 5500 3200
 $Comp
 L Connector:Barrel_Jack J25
 U 1 1 5BB69714
@@ -61,13 +48,6 @@ F 3 "~" H 7900 1060 50  0001 C CNN
 	1    7850 1100
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	4900 2900 4900 3050
-Wire Wire Line
-	4900 3050 3650 3050
-Connection ~ 3650 3050
-Wire Wire Line
-	3650 3050 3650 3550
 $Comp
 L power:GNDREF #PWR0101
 U 1 1 5BB6A0FC
@@ -608,18 +588,160 @@ Wire Wire Line
 Connection ~ 8300 5300
 Connection ~ 8550 4100
 Wire Wire Line
-	8550 4100 8550 1400
-Wire Wire Line
 	6800 4100 8550 4100
 Wire Wire Line
-	7950 1400 8550 1400
-Wire Wire Line
-	3650 1400 7750 1400
-Wire Wire Line
-	3650 1400 3650 3050
+	3650 1400 4100 1400
 Wire Wire Line
 	2800 3550 3650 3550
 Connection ~ 3650 3550
 Wire Wire Line
 	3650 3550 3650 3800
+$Comp
+L Switch:SW_SPST_LED SW1
+U 1 1 5C6C82DB
+P 8750 1500
+F 0 "SW1" H 8750 1835 50  0000 C CNN
+F 1 "LED Rocker Switch" H 8750 1744 50  0000 C CNN
+F 2 "" H 8750 1800 50  0001 C CNN
+F 3 "" H 8750 1800 50  0001 C CNN
+	1    8750 1500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8950 1400 8950 1500
+$Comp
+L huzzahesp32:HuzzahESP32 U1
+U 1 1 5C6D9879
+P 6950 2450
+F 0 "U1" V 7050 2050 50  0000 L CNN
+F 1 "HuzzahESP32" V 7150 1900 50  0000 L CNN
+F 2 "" H 7050 2450 50  0001 C CNN
+F 3 "" H 7050 2450 50  0001 C CNN
+	1    6950 2450
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4100 1850 4100 1400
+Connection ~ 4100 1400
+Wire Wire Line
+	7950 1400 8550 1400
+Wire Wire Line
+	4100 1400 4900 1400
+Wire Wire Line
+	6850 2950 6850 3000
+Wire Wire Line
+	8550 1500 8550 4100
+Wire Wire Line
+	3650 1400 3650 3550
+Wire Wire Line
+	5200 3200 5200 3100
+Wire Wire Line
+	5200 3100 4900 3100
+Wire Wire Line
+	4900 3100 4900 2850
+Wire Wire Line
+	7650 2950 7650 3100
+Wire Wire Line
+	7650 3100 5200 3100
+Connection ~ 5200 3100
+Wire Wire Line
+	5300 3200 5300 3050
+Wire Wire Line
+	7550 2950 7550 3050
+Wire Wire Line
+	7550 3050 5300 3050
+Connection ~ 5300 3050
+Wire Wire Line
+	5100 3050 5300 3050
+Wire Wire Line
+	5100 2850 5100 3050
+Wire Wire Line
+	5400 3200 5400 3150
+Wire Wire Line
+	5400 2950 5300 2950
+Wire Wire Line
+	5300 2950 5300 2850
+Wire Wire Line
+	8050 2950 8050 3150
+Wire Wire Line
+	8050 3150 5400 3150
+Connection ~ 5400 3150
+Wire Wire Line
+	5400 3150 5400 2950
+Wire Wire Line
+	4500 2850 4500 3000
+Wire Wire Line
+	4500 3000 4700 3000
+Wire Wire Line
+	5500 3000 5500 3200
+$Comp
+L Connector:Conn_01x02_Female J1
+U 1 1 5C735CDF
+P 4800 850
+F 0 "J1" V 4740 662 50  0000 R CNN
+F 1 "Blanking Signal" V 4649 662 50  0000 R CNN
+F 2 "" H 4800 850 50  0001 C CNN
+F 3 "~" H 4800 850 50  0001 C CNN
+	1    4800 850 
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:Conn_01x02_Female J2
+U 1 1 5C735E3E
+P 6150 850
+F 0 "J2" V 6090 662 50  0000 R CNN
+F 1 "Trigger Channel" V 5999 662 50  0000 R CNN
+F 2 "" H 6150 850 50  0001 C CNN
+F 3 "~" H 6150 850 50  0001 C CNN
+	1    6150 850 
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	6250 1050 6250 1400
+Connection ~ 6250 1400
+Wire Wire Line
+	4900 1050 4900 1400
+Connection ~ 4900 1400
+Wire Wire Line
+	4900 1400 6250 1400
+Wire Wire Line
+	4500 3000 3500 3000
+Wire Wire Line
+	3500 3000 3500 1050
+Connection ~ 4500 3000
+Wire Wire Line
+	7350 2950 7350 3250
+Wire Wire Line
+	7350 3250 5700 3250
+Wire Wire Line
+	5700 3250 5700 3000
+Wire Wire Line
+	5700 3000 5500 3000
+Connection ~ 5500 3000
+Wire Wire Line
+	6950 2950 6950 3200
+Wire Wire Line
+	6950 3200 6150 3200
+Wire Wire Line
+	6150 3200 6150 1600
+Wire Wire Line
+	6250 1400 7750 1400
+Wire Wire Line
+	6250 1400 6250 3000
+Wire Wire Line
+	6250 3000 6850 3000
+Wire Wire Line
+	4900 1850 4900 1600
+Wire Wire Line
+	4900 1600 6150 1600
+Connection ~ 6150 1600
+Wire Wire Line
+	6150 1600 6150 1050
+Wire Wire Line
+	3500 1050 4800 1050
+Wire Wire Line
+	4700 2850 4700 3000
+Connection ~ 4700 3000
+Wire Wire Line
+	4700 3000 5500 3000
 $EndSCHEMATC

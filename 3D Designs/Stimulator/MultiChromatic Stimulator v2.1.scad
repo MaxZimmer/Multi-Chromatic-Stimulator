@@ -22,10 +22,9 @@ Smoothness = 360;   // Number of facets
 tol = 0.1;          // Printing tolerance
 TOL = 0.4;          // Component tolerance
 
-sep = 0;            // x & y separation values for display function
-zsep = 0;           // z separation values for display function
+sep = 2;            // x & y separation values for display function
+zsep = 2;           // z separation values for display function
 
-n_LED = 4;          // Number of LED channel
 
 // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 // // // // // // // // // // // // // // // // // // // // // // // // // // // //
@@ -39,13 +38,29 @@ Back = 1;
 Lid = 1;
 LED_Holder = 1;
 
-PCB = 10;
-Power_Switch = 10;
+PCB = 0;
+Power_Switch = 0;
 
 // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 // // // // // // // // // // // // // // // // // // // // // // // // // // // //
-/*                        ---  Component Parameteres  ---                        */
+/*                        ---  Component Parameters  ---                        */
 
+// Number of LED channel
+    n_LED = 4;          
+
+// Potentiometer Board
+    x_pot = 70.5;
+    y_pot = 50.5;
+    z_pot = 6.86+z_PCB;
+    z_pot2 = 4.83+z_PCB;
+    d_pot = 10.26;
+    r_pot = 3/2;
+    pos_z_pot = z_Box-20;
+    x_Support = 2*Wall;
+    z_Support = 5*Wall;
+    y_Support = sqrt((y_pot+Wall)*(y_pot+Wall)+z_Support*z_Support);
+    rotate_Support = [atan((y_pot+Wall)/z_Support),0,0];
+    
 // M3
     r_M3 = 3/2;
     R_M3 = 4/2;
@@ -134,18 +149,6 @@ Power_Switch = 10;
     z_Switch = 15;
     pos_z_Switch = 22.5;
     
-// Potentiometer
-    x_pot = 70.5;
-    y_pot = 50.5;
-    z_pot = 6.86+z_PCB;
-    z_pot2 = 4.83+z_PCB;
-    d_pot = 10.26;
-    r_pot = 3/2;
-    pos_z_pot = z_Box-20;
-    x_Support = 2*Wall;
-    z_Support = 5*Wall;
-    y_Support = sqrt((y_pot+Wall)*(y_pot+Wall)+z_Support*z_Support);
-    rotate_Support = [atan((y_pot+Wall)/z_Support),0,0];
 
  // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 /*                               ---  Display  ---                               */
@@ -517,7 +520,7 @@ module Labels(){
 }
 
 module Logo(){
-    translate([-x_Box/2+75,-y_Box/2+7.5,z_Box-Wall/2])scale([1,1,1])scale([0.175,0.175,1])import("C:/Users/Maxime/Documents/GitHub/Openspritzer/3D Printing Files/v1.3 - Customed PCB/Badenlab_logo.stl");
+    translate([-x_Box/2+75,-y_Box/2+7.5,z_Box-Wall/2])scale([1,1,1])scale([0.175,0.175,1])import("C:/Users/Maxime/Documents/GitHub/Multi-Chromatic-Stimulator/3D Designs/Stimulator/Logo/Badenlab_logo.stl");
 }
 
 module LED(){

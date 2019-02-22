@@ -1,0 +1,109 @@
+//*************************************//
+//all units in mm.
+//CC BY 4.0
+//AM Chagas 20180516
+//*************************************//
+LCP30 = 10;
+Mirror_Holder = 10;
+Dichroic_Frame = 1;
+
+
+//variables
+rotation = 45;
+lens_offset = 1;
+
+
+
+Smoothness = 360; // A value of 360 is recommended for a smooth print
+tol = 0.1; // Tolerance value, set by default to 0.1 for Ultimaker2 printer
+
+sep = 75; // Separtion between objects (75 by default for proper display)
+Wall = 2.5; //Wall thickness (applied only to certain modules
+wall = 2;
+rod_pos2 = 60/2; // Rod position for 60mm cage system
+r_rod = 6.1/2 + tol/2; // Rod radius 0.25 inch
+S4 = 2.85/2; // ThorLabs small holding screws 0.05 inch
+r_lens_1_inch = 25.4/2;
+
+Frame_Base = 10;
+dichz = 25.4;
+dichy = 1;
+dichx = 36.2;
+
+x_Frame = 36.2;
+y_Frame = 3;
+z_Frame = 25.4+1.5*Wall;
+X_LCP30 = 73.7; //outer cube length
+x_LCP30 = 40.7; //inner cube length
+y_LCP30 = 40.6;
+z_LCP30 = 12.70; //module thickness
+y_Groove_LCP30 = 12.9;
+x_arm_LCP30 = 16.5; //arm width
+y_arm_LCP30 = 14; //arm length
+x_ext_LCP30 = 96.3; //module diagonal length
+pos_z_Screw_LCP30 = 7.1;
+pos_x_screw_LCP30 = 67.3/2;
+pos_y_screw_LCP30 = 26.7/2;
+
+
+if (LCP30==1){LCP();}
+if (Mirror_Holder==1){translate([lens_offset,0,0])rotate([0,0,rotation])mirror_holder();}
+if (Dichroic_Frame==1){translate([lens_offset,0,z_LCP30+Frame_Base])rotate([0,0,rotation])dich_frame();}
+
+module LCP(){
+difference(){
+        translate([-X_LCP30/2,-y_LCP30/2,0])cube([X_LCP30,y_LCP30,z_LCP30]);
+        
+        difference(){
+            translate([-X_LCP30/2,-y_Groove_LCP30/2,0])cube([X_LCP30,y_Groove_LCP30,z_LCP30]);
+            translate([-x_LCP30/2,-y_LCP30/2,0])cube([x_LCP30,y_LCP30,z_LCP30]);
+        }
+        
+        Screw_LCP30();
+        translate([lens_offset,0,0])cylinder(r=r_lens_1_inch,h=z_LCP30,$fn=Smoothness);
+        
+        //customisation
+        translate([-X_LCP30/2,-y_LCP30/2,0])cube([X_LCP30/2-x_LCP30/2+2*tol,y_LCP30,z_LCP30]);
+    }
+    //customization
+    difference(){
+        translate([-X_LCP30/2,-y_Groove_LCP30/2+2*tol,0])cube([X_LCP30/2-x_LCP30/2+2*tol,y_Groove_LCP30-4*tol,z_LCP30]);
+        
+        Screw_LCP30();
+        translate([-pos_x_screw_LCP30,0,0])cylinder(r=S4,h=z_LCP30,$fn=Smoothness);
+    }
+}
+
+module Screw_LCP30(){ 
+    translate([pos_x_screw_LCP30,pos_y_screw_LCP30,0])cylinder(r=S4,h=z_LCP30,$fn=Smoothness);
+    translate([pos_x_screw_LCP30,-pos_y_screw_LCP30,0])cylinder(r=S4,h=z_LCP30,$fn=Smoothness);
+    
+    translate([rod_pos2,-y_LCP30/2,pos_z_Screw_LCP30])rotate([-90,0,0])cylinder(r=r_rod,h=y_LCP30,$fn=Smoothness);
+    translate([-rod_pos2,-y_LCP30/2,pos_z_Screw_LCP30])rotate([-90,0,0])cylinder(r=r_rod,h=y_LCP30,$fn=Smoothness);
+    
+    translate([lens_offset,-y_LCP30/2,z_LCP30/2])rotate([-90,0,0])cylinder(r=S4,h=y_LCP30,$fn=Smoothness);
+    translate([x_LCP30/2,0,z_LCP30/2])rotate([0,-90,0])cylinder(r=S4,h=x_LCP30/2,$fn=Smoothness);
+}
+
+module mirror_holder(){
+cylinder(r=r_lens_1_inch-tol,h=z_LCP30+Wall,$fn=Smoothness);
+    
+translate([0,0,z_LCP30])difference(){
+    translate([-x_Frame/2-1.5*Wall,-y_Frame/2-Wall,0])cube([x_Frame+3*Wall,y_Frame+2*Wall,z_Frame+Frame_Base]);
+    
+    translate([-x_Frame/2-tol,-y_Frame/2-Wall,Frame_Base])cube([x_Frame+2*tol,y_Frame+2*Wall,z_Frame+tol]);
+    translate([-x_Frame/2-Wall-tol,-y_Frame/2-wall/2-tol,Frame_Base-Wall/2])cube([x_Frame+2*Wall+2*tol,y_Frame+wall+2*tol,z_Frame+Wall/2+tol]);
+}
+}
+
+module dich_frame(){
+difference(){    
+    translate([-x_Frame/2-Wall,-y_Frame/2-wall/2,0])cube([x_Frame+2*Wall,y_Frame+wall,z_Frame]);
+
+    translate([-dichx/2-tol,-y_Frame/2-wall/2,Wall-tol])cube([dichx+2*tol,dichy+wall/2,dichz+2*tol]);
+    translate([-dichx/2+wall/2,-y_Frame/2-Wall,Wall-tol+wall/2])cube([dichx-wall,y_Frame+2*wall,dichz-wall]);
+    translate([-Wall,-y_Frame/2-wall/2,z_Frame-Wall])cube([2*wall,dichy+wall/2,Wall]);
+}
+}
+
+
