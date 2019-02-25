@@ -13,7 +13,7 @@ Adafruit TLC5947 https://learn.adafruit.com/tlc5947-tlc59711-pwm-led-driver-brea
 ESP32 driver : https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers
 
 Arduino core for ESP32 chip https://github.com/espressif/arduino-esp32#using-through-arduino-ide
-<img align="center" src="https://github.com/BadenLab/Multi-Chromatic-Stimulator/blob/master/Images/Visual%20Stimulator.png" width="1000"/>
+<img align="center" src="https://github.com/BadenLab/Multi-Chromatic-Stimulator/blob/master/Images/Visual%20Stimulator.PNG" width="1000"/>
 </p>
 
 </p>
