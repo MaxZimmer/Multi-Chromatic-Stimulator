@@ -22,8 +22,8 @@ Smoothness = 360;   // Number of facets
 tol = 0.1;          // Printing tolerance
 TOL = 0.4;          // Component tolerance
 
-sep = 2;            // x & y separation values for display function
-zsep = 2;           // z separation values for display function
+sep = 0;            // x & y separation values for display function
+zsep = 0;           // z separation values for display function
 
 
 // // // // // // // // // // // // // // // // // // // // // // // // // // // //
@@ -35,8 +35,10 @@ Front = 1;
 Right = 1;
 Left = 1;
 Back = 1;
-Lid = 1;
-LED_Holder = 1;
+Lid = 10;
+
+LED_Option = 1;
+LED_Holder = 10;
 
 PCB = 0;
 Power_Switch = 0;
@@ -44,7 +46,16 @@ Power_Switch = 0;
 // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 /*                        ---  Component Parameters  ---                        */
-
+// Customed PCB
+    x_PCB = 125;
+    y_PCB = 75;
+    z_PCB = 1;
+    
+// Box
+    x_Box = x_PCB + 2*TOL;
+    y_Box = y_PCB + 2*TOL + 6*Wall;
+    z_Box = 50; 
+    
 // Number of LED channel
     n_LED = 4;          
 
@@ -55,6 +66,7 @@ Power_Switch = 0;
     z_pot2 = 4.83+z_PCB;
     d_pot = 10.26;
     r_pot = 3/2;
+    pot_pitch = 2.54*4;
     pos_z_pot = z_Box-20;
     x_Support = 2*Wall;
     z_Support = 5*Wall;
@@ -73,20 +85,16 @@ Power_Switch = 0;
     r_M4_Nut = 7.8/2;
     h_M4_Nut = 2.1;
     
-// Customed PCB
-    x_PCB = 125;
-    y_PCB = 75;
-    z_PCB = 1;
  
-    pos_x_PCB1 = -x_PCB/2 + 25;
-    pos_x_PCB2 = -x_PCB/2 + 110.25;
-    pos_y_PCB1 = -y_PCB/2 + 15;
-    pos_y_PCB2 = -y_PCB/2 + 55;
+    pos_x_PCB1 = -x_PCB/2 + 25+2*Wall;
+    pos_x_PCB2 = -x_PCB/2 + 110.25+2*Wall;
+    pos_y_PCB1 = -y_PCB/2 + 15+2*Wall;
+    pos_y_PCB2 = -y_PCB/2 + 55+2*Wall;
     pos_z_PCB = 7.5;
     
 // BNC
-    pos_y_BNC1 = 13;
-    pos_y_BNC2 = 57.75;
+    pos_y_BNC1 = 13+2*Wall;
+    pos_y_BNC2 = 57.75+2*Wall;
     pos_z_BNC2 = 15.8/2;
     h_BNC = 15.8/2;
     r_BNC = 12.83/2;
@@ -104,17 +112,14 @@ Power_Switch = 0;
     pos_z_USB = pos_z_PCB + z_PCB + 12.25;
     
 // Box
-    x_Box = x_PCB + 2*TOL;
-    y_Box = y_PCB + 2*TOL + 6*Wall;
-    z_Box = 50; 
     f1=15;
-    f2=35;  
+    f2=x_Box+4*Wall-f1-35;  
     b1=20;
-    b2=20;
+    b2=x_Box+4*Wall-b1-20;
     r1=25;
-    r2=25;
-    l1=10;
-    l2=15;
+    r2=y_Box+4*Wall-r1-25;
+    l1=13;
+    l2=y_Box+4*Wall-l1-15;
     
 // LEDs
     r_LED = 4.75/2 + tol;
@@ -149,6 +154,12 @@ Power_Switch = 0;
     z_Switch = 15;
     pos_z_Switch = 22.5;
     
+// Screws
+    pos_x_Screw1 = -x_Box/2+2*Wall;
+    pos_x_Screw2 = x_Box/2+2*Wall;
+    pos_y_Screw1 = -y_Box/2+2*Wall;
+    pos_y_Screw2 = y_Box/2+2*Wall;
+    
 
  // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 /*                               ---  Display  ---                               */
@@ -156,51 +167,52 @@ Power_Switch = 0;
 if(Bottom==1){
     difference(){
         Box();
-        translate([-x_Box/2-2*Wall,-y_Box/2-2*Wall,z_Box-Wall-2*tol])cube([x_Box+4*Wall,y_Box+4*Wall,2*Wall]);
+        
+        translate([-x_Box/2-tol,-y_Box/2-tol,z_Box-Wall-2*tol])cube([x_Box+4*Wall+2*tol,y_Box+4*Wall+2*tol,2*Wall+4*tol]);
         Front_neg();
         Back_neg();
         Left_neg();
         Right_neg();  
     }
 }
-if(Front==1){translate([0,-sep,2*zsep]){
+if(Front==1){translate([0,-sep,zsep]){
     difference(){
         intersection(){
             Box();
             Front();
         }
+        Right_neg();
+        Left_neg();
     }
-    LED();
+    if (LED_Option==1)LED();
 }}
-if(Back==1){translate([0,sep,2*zsep]){
+if(Back==1){translate([0,sep,zsep]){
     difference(){
         intersection(){
             Box();
             Back();
         }
+        Right_neg();
+        Left_neg();
         Potentiometer();
     }
     Potentiometer_Platform();
 }}
-if(Right==1){translate([sep,0,zsep]){
+if(Right==1){translate([sep,0,2*zsep]){
     difference(){
         intersection(){
             Box();
             Right();
         }
-        Front_neg();
-        Back_neg();
     }
 }}
 
-if(Left==1)translate([-sep,0,zsep]){
+if(Left==1)translate([-sep,0,2*zsep]){
     difference(){
         intersection(){
             Box();
             Left();
         }
-        Front_neg();
-        Back_neg();
     }
 }
 
@@ -235,11 +247,11 @@ if(Power_Switch==1){
 module Box(){
    difference(){
        minkowski(){
-           translate([-x_Box/2,-y_Box/2,0])cube([x_Box,y_Box,z_Box-Wall]);
+           translate([-x_Box/2+Wall,-y_Box/2+Wall,0])cube([x_Box+2*Wall,y_Box+2*Wall,z_Box-Wall]);
            cylinder(r1=Wall,h=Wall,$fn=Smoothness);
        }
        difference(){
-           translate([-x_Box/2,-y_Box/2,Wall])cube([x_Box,y_Box,z_Box+tol]);
+           translate([-x_Box/2+2*Wall,-y_Box/2+2*Wall,Wall])cube([x_Box,y_Box,z_Box+tol]);
            Corners();
        }
        Screws();
@@ -249,7 +261,7 @@ module Box(){
        USB();
        Power_Switch();
        Labels();
-       LED_neg();
+       if (LED_Option==1)LED_neg();
        LED_Cables();
    }
    
@@ -260,47 +272,36 @@ module Box(){
 
 module Lid(){
    difference(){
-      translate([-x_Box/2,-y_Box/2,z_Box-2*Wall])cube([x_Box,y_Box,2*Wall]);
+      translate([-x_Box/2+2*Wall,-y_Box/2+2*Wall,z_Box-2*Wall])cube([x_Box,y_Box,2*Wall]);
   } 
 }
 
 module PCB(){
     translate([-x_PCB/2,-y_PCB/2,pos_z_PCB])cube([x_PCB,y_PCB,z_PCB]);
+    for (aa = [0:10:110]){
+        translate([-x_PCB/2+aa,-y_PCB/2+0.5,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
+    }
+    for (bb = [0:10:110]){
+        translate([-x_PCB/2+bb,y_PCB/2-0.5-y_connector,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
+    }
+    for (aaa = [126.5:10:186.5]){
+        translate([-x_PCB/2+aaa,-y_PCB/2+0.5,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
+    }
+    for (bbb = [126.5:10:186.5]){
+        translate([-x_PCB/2+bbb,y_PCB/2-0.5-y_connector,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
+    }
     
-    translate([-x_PCB/2+37,-y_PCB/2+0.5,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
-    translate([-x_PCB/2+47,-y_PCB/2+0.5,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
-    translate([-x_PCB/2+57,-y_PCB/2+0.5,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
-    translate([-x_PCB/2+67,-y_PCB/2+0.5,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
-    translate([-x_PCB/2+77,-y_PCB/2+0.5,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
-    translate([-x_PCB/2+87,-y_PCB/2+0.5,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
-    translate([-x_PCB/2+97,-y_PCB/2+0.5,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
-    translate([-x_PCB/2+107,-y_PCB/2+0.5,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
-    translate([-x_PCB/2+117,-y_PCB/2+0.5,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
+    translate([x_PCB/2-0.5-y_connector,-y_PCB/2+11.7,pos_z_PCB+z_PCB])cube([y_connector,x_connector,z_connector]);
+    translate([x_PCB/2-0.5-y_connector,-y_PCB/2+23.25,pos_z_PCB+z_PCB])cube([y_connector,x_connector2,z_connector]);
+    translate([x_PCB/2-0.5-y_connector,-y_PCB/2+47.6,pos_z_PCB+z_PCB])cube([y_connector,x_connector,z_connector]);
+    translate([x_PCB/2-0.5-y_connector,-y_PCB/2+59.4,pos_z_PCB+z_PCB])cube([y_connector,x_connector,z_connector]);
     
-    translate([-x_PCB/2+7,y_PCB/2-0.5-y_connector,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
-    translate([-x_PCB/2+17,y_PCB/2-0.5-y_connector,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
-    translate([-x_PCB/2+27,y_PCB/2-0.5-y_connector,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
-    translate([-x_PCB/2+37,y_PCB/2-0.5-y_connector,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
-    translate([-x_PCB/2+47,y_PCB/2-0.5-y_connector,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
-    translate([-x_PCB/2+57,y_PCB/2-0.5-y_connector,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
-    translate([-x_PCB/2+67,y_PCB/2-0.5-y_connector,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
-    translate([-x_PCB/2+77,y_PCB/2-0.5-y_connector,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
-    translate([-x_PCB/2+87,y_PCB/2-0.5-y_connector,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
-    translate([-x_PCB/2+97,y_PCB/2-0.5-y_connector,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
-    translate([-x_PCB/2+107,y_PCB/2-0.5-y_connector,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
-    translate([-x_PCB/2+117,y_PCB/2-0.5-y_connector,pos_z_PCB+z_PCB])cube([x_connector,y_connector,z_connector]);
-    
-    translate([x_PCB/2-0.5-y_connector,-y_PCB/2+10.5,pos_z_PCB+z_PCB])cube([y_connector,x_connector,z_connector]);
-    translate([x_PCB/2-0.5-y_connector,-y_PCB/2+21,pos_z_PCB+z_PCB])cube([y_connector,x_connector2,z_connector]);
-    translate([x_PCB/2-0.5-y_connector,-y_PCB/2+46.5,pos_z_PCB+z_PCB])cube([y_connector,x_connector,z_connector]);
-    translate([x_PCB/2-0.5-y_connector,-y_PCB/2+56.5,pos_z_PCB+z_PCB])cube([y_connector,x_connector,z_connector]);
-    
-    translate([x_PCB/2-15+2,-y_PCB/2+33,pos_z_PCB+z_PCB])cube([15,y_Jack,
-    h_Jack]);
+    translate([x_PCB/2-15+2,-y_PCB/2+34.75,pos_z_PCB+z_PCB])cube([15,y_Jack,h_Jack]);
     
 
      
      translate([-x_PCB/2+56.5,-y_PCB/2+25,pos_z_PCB+z_PCB])cube([x_TLC,y_TLC,z_TLC]);
+    translate([-x_PCB/2+128,-y_PCB/2+25,pos_z_PCB+z_PCB])cube([x_TLC,y_TLC,z_TLC]);
      
      translate([-x_PCB/2,-y_PCB/2+23.5,pos_z_PCB+z_PCB])cube([x_ESP,y_ESP,z_ESP]);
 }
@@ -324,15 +325,15 @@ module Screws(){
     translate([pos_x_PCB2,pos_y_PCB1,0])cylinder(r=r_M3,h=pos_z_PCB+tol,$fn=Smoothness);
     translate([pos_x_PCB2,pos_y_PCB2,0])cylinder(r=r_M3,h=pos_z_PCB+tol,$fn=Smoothness);
     
-    translate([-x_Box/2+Wall,-y_Box/2+Wall,-tol])cylinder(r=r_M4,h=z_Box+Wall+2*tol,$fn=Smoothness);
-    translate([x_Box/2-Wall,-y_Box/2+Wall,-tol])cylinder(r=r_M4,h=z_Box+Wall+2*tol,$fn=Smoothness);
-    translate([x_Box/2-Wall,y_Box/2-Wall,-tol])cylinder(r=r_M4,h=z_Box+Wall+2*tol,$fn=Smoothness);
-    translate([-x_Box/2+Wall,y_Box/2-Wall,-tol])cylinder(r=r_M4,h=z_Box+Wall+2*tol,$fn=Smoothness);
+    translate([pos_x_Screw1,pos_y_Screw1,-tol])cylinder(r=r_M4,h=z_Box+Wall+2*tol,$fn=Smoothness);
+    translate([pos_x_Screw1,pos_y_Screw2,-tol])cylinder(r=r_M4,h=z_Box+Wall+2*tol,$fn=Smoothness);
+    translate([pos_x_Screw2,pos_y_Screw1,-tol])cylinder(r=r_M4,h=z_Box+Wall+2*tol,$fn=Smoothness);
+    translate([pos_x_Screw2,pos_y_Screw2,-tol])cylinder(r=r_M4,h=z_Box+Wall+2*tol,$fn=Smoothness);
     
-    translate([-x_Box/2+Wall,-y_Box/2+Wall,z_Box-Wall/2])cylinder(r=R_M4,h=z_Box+Wall+2*tol,$fn=Smoothness);
-    translate([x_Box/2-Wall,-y_Box/2+Wall,z_Box-Wall/2])cylinder(r=R_M4,h=z_Box+Wall+2*tol,$fn=Smoothness);
-    translate([x_Box/2-Wall,y_Box/2-Wall,z_Box-Wall/2])cylinder(r=R_M4,h=z_Box+Wall+2*tol,$fn=Smoothness);
-    translate([-x_Box/2+Wall,y_Box/2-Wall,z_Box-Wall/2])cylinder(r=R_M4,h=z_Box+Wall+2*tol,$fn=Smoothness);
+    translate([pos_x_Screw1,pos_y_Screw1,z_Box-Wall/2])cylinder(r=R_M4,h=z_Box+Wall+2*tol,$fn=Smoothness);
+    translate([pos_x_Screw1,pos_y_Screw2,z_Box-Wall/2])cylinder(r=R_M4,h=z_Box+Wall+2*tol,$fn=Smoothness);
+    translate([pos_x_Screw2,pos_y_Screw1,z_Box-Wall/2])cylinder(r=R_M4,h=z_Box+Wall+2*tol,$fn=Smoothness);
+    translate([pos_x_Screw2,pos_y_Screw2,z_Box-Wall/2])cylinder(r=R_M4,h=z_Box+Wall+2*tol,$fn=Smoothness);
 }
 
 module Nuts(){
@@ -341,44 +342,44 @@ module Nuts(){
     translate([pos_x_PCB2,pos_y_PCB1,-tol])cylinder(r=r_M3_Nut,h=h_M3_Nut+Wall,$fn=6);
     translate([pos_x_PCB2,pos_y_PCB2,-tol])cylinder(r=r_M3_Nut,h=h_M3_Nut+Wall,$fn=6);
     
-    translate([-x_Box/2+Wall,-y_Box/2+Wall,-tol])cylinder(r=r_M4_Nut,h=h_M4_Nut+Wall,$fn=6);
-    translate([x_Box/2-Wall,-y_Box/2+Wall,-tol])cylinder(r=r_M4_Nut,h=h_M4_Nut+Wall,$fn=6);
-    translate([x_Box/2-Wall,y_Box/2-Wall,-tol])cylinder(r=r_M4_Nut,h=h_M4_Nut+Wall,$fn=6);
-    translate([-x_Box/2+Wall,y_Box/2-Wall,-tol])cylinder(r=r_M4_Nut,h=h_M4_Nut+Wall,$fn=6);
+    translate([pos_x_Screw1,pos_y_Screw1,-tol])cylinder(r=r_M4_Nut,h=h_M4_Nut+Wall,$fn=6);
+    translate([pos_x_Screw1,pos_y_Screw2,-tol])cylinder(r=r_M4_Nut,h=h_M4_Nut+Wall,$fn=6);
+    translate([pos_x_Screw2,pos_y_Screw1,-tol])cylinder(r=r_M4_Nut,h=h_M4_Nut+Wall,$fn=6);
+    translate([pos_x_Screw2,pos_y_Screw2,-tol])cylinder(r=r_M4_Nut,h=h_M4_Nut+Wall,$fn=6);
 }
 
 module Corners(){
-    translate([-x_Box/2+Wall,-y_Box/2+Wall,Wall])cylinder(r1=r_M4+2*Wall,r2=r_M4+Wall/2,h=pos_z_PCB-Wall-TOL,$fn=Smoothness);
-    translate([x_Box/2-Wall,-y_Box/2+Wall,Wall])cylinder(r1=r_M4+2*Wall,r2=r_M4+Wall/2,h=pos_z_PCB-Wall-TOL,$fn=Smoothness);
-    translate([x_Box/2-Wall,y_Box/2-Wall,Wall])cylinder(r1=r_M4+2*Wall,r2=r_M4+Wall/2,h=pos_z_PCB-Wall-TOL,$fn=Smoothness);
-    translate([-x_Box/2+Wall,y_Box/2-Wall,Wall])cylinder(r1=r_M4+2*Wall,r2=r_M4+Wall/2,h=pos_z_PCB-Wall-TOL,$fn=Smoothness);
+    translate([pos_x_Screw1,pos_y_Screw1,Wall])cylinder(r1=r_M4+2*Wall,r2=r_M4+Wall/2,h=pos_z_PCB-Wall-TOL,$fn=Smoothness);
+    translate([pos_x_Screw1,pos_y_Screw2,Wall])cylinder(r1=r_M4+2*Wall,r2=r_M4+Wall/2,h=pos_z_PCB-Wall-TOL,$fn=Smoothness);
+    translate([pos_x_Screw2,pos_y_Screw1,Wall])cylinder(r1=r_M4+2*Wall,r2=r_M4+Wall/2,h=pos_z_PCB-Wall-TOL,$fn=Smoothness);
+    translate([pos_x_Screw2,pos_y_Screw2,Wall])cylinder(r1=r_M4+2*Wall,r2=r_M4+Wall/2,h=pos_z_PCB-Wall-TOL,$fn=Smoothness);
     
-    translate([-x_Box/2+Wall,-y_Box/2+Wall,0])cylinder(r=r_M4+Wall/2,h=z_Box,$fn=Smoothness);
-    translate([x_Box/2-Wall,-y_Box/2+Wall,0])cylinder(r=r_M4+Wall/2,h=z_Box,$fn=Smoothness);
-    translate([x_Box/2-Wall,y_Box/2-Wall,0])cylinder(r=r_M4+Wall/2,h=z_Box,$fn=Smoothness);
-    translate([-x_Box/2+Wall,y_Box/2-Wall,0])cylinder(r=r_M4+Wall/2,h=z_Box,$fn=Smoothness);
+    translate([pos_x_Screw1,pos_y_Screw1,0])cylinder(r=r_M4+Wall/2,h=z_Box,$fn=Smoothness);
+    translate([pos_x_Screw1,pos_y_Screw2,0])cylinder(r=r_M4+Wall/2,h=z_Box,$fn=Smoothness);
+    translate([pos_x_Screw2,pos_y_Screw1,0])cylinder(r=r_M4+Wall/2,h=z_Box,$fn=Smoothness);
+    translate([pos_x_Screw2,pos_y_Screw2,0])cylinder(r=r_M4+Wall/2,h=z_Box,$fn=Smoothness);
 }
     
 module BNC(){
-    translate([-x_Box/2-1.5*Wall-tol,-y_PCB/2+pos_y_BNC1,pos_z_BNC])difference(){
+    translate([-x_Box/2-tol,-y_PCB/2+pos_y_BNC1,pos_z_BNC])difference(){
         rotate([0,90,0])cylinder(r=r_BNC+tol,h=2.5*Wall+TOL,$fn=Smoothness);
-        translate([0,-r_BNC,r_BNC-cut_BNC])cube([2.5*Wall+TOL,2.5*r_BNC,cut_BNC]);
+        translate([0,-r_BNC,r_BNC-cut_BNC])cube([2.5*Wall+TOL,2*r_BNC,cut_BNC+Wall]);
     }
-    translate([-x_Box/2-1.5*Wall-tol,-y_PCB/2+pos_y_BNC2,pos_z_BNC])difference(){
+    translate([-x_Box/2-tol,-y_PCB/2+pos_y_BNC2,pos_z_BNC])difference(){
         rotate([0,90,0])cylinder(r=r_BNC+tol,h=2.5*Wall+TOL,$fn=Smoothness);
-        translate([0,-r_BNC,r_BNC-cut_BNC])cube([2.5*Wall+TOL,2.5*r_BNC,cut_BNC]);
+        translate([0,-r_BNC,r_BNC-cut_BNC])cube([2.5*Wall+TOL,2*r_BNC,cut_BNC+Wall]);
     }
 }    
 
 module USB(){
     minkowski(){
-        translate([-x_Box/2-Wall-tol,-y_USB/2-tol-Wall,pos_z_USB])cube([Wall+tol,y_USB+2*tol,z_USB,]);
-        rotate([0,90,0])cylinder(r=1,h=1, $fn=Smoothness);
+        translate([-x_Box/2-tol,-y_USB/2-tol,pos_z_USB])cube([2*Wall+tol,y_USB+2*tol,z_USB,]);
+        rotate([0,90,0])cylinder(r=1.25,h=1, $fn=Smoothness);
     }
 }
     
 module Jack(){
-    translate([x_PCB/2,-y_Jack/2,pos_z_PCB+z_PCB])cube([2.5*Wall+TOL+tol,y_Jack,h_Jack]);
+    translate([x_PCB/2+2*Wall,-y_Jack/2+2*Wall,pos_z_PCB+z_PCB])cube([2.5*Wall+TOL+tol,y_Jack,h_Jack]);
 }
 
 // // // // // // // // // // // // Compartimentation Modules // // // // // // // // // // // //
@@ -387,109 +388,109 @@ module Jack(){
 module Front(){
     difference(){
         union(){
-            translate([-x_Box/2-Wall,-y_Box/2-Wall,z_Box*2/3-Wall])cube([f1+tol,4*Wall,z_Box/3]);
-            translate([-x_Box/2-Wall+f1+tol,-y_Box/2-Wall,3*Wall])cube([x_Box+2*Wall-f1-f2-2*tol,4*Wall,z_Box-4*Wall]);
-            translate([x_Box/2+Wall-f2-tol,-y_Box/2-Wall,z_Box*2/3-Wall])cube([f2+tol,4*Wall,z_Box/3]);
+            translate([-x_Box/2,-y_Box/2,z_Box*1/3-Wall])cube([f1,4*Wall,z_Box*2/3]);
+            translate([-x_Box/2+f1,-y_Box/2,3*Wall])cube([f2,4*Wall,z_Box-4*Wall]);
+            translate([-x_Box/2+f1+f2,-y_Box/2,z_Box*1/3-Wall])cube([x_Box+4*Wall-f1-f2,4*Wall,z_Box*2/3]);
         }  
-        translate([-x_Box/2-Wall,-y_Box/2-Wall,z_Box*2/3-Wall])cube([f1+tol,Wall/2+2*tol,Wall]);//Front Left
-        translate([-x_Box/2-Wall+f1,-y_Box/2-Wall,3*Wall])cube([x_Box+2*Wall-f1-f2,Wall/2,Wall-tol]);//Front Middle
-        translate([x_Box/2+Wall-f2-tol,-y_Box/2-Wall,z_Box*2/3-Wall])cube([f2+tol,Wall/2+2*tol,Wall]);//Front Right
+        translate([-x_Box/2,-y_Box/2,z_Box*1/3-Wall])cube([f1,Wall,Wall]);//Front Left
+        translate([-x_Box/2+f1,-y_Box/2+Wall,3*Wall])cube([f2,Wall,Wall]);//Front Middle
+        translate([-x_Box/2+f1+f2,-y_Box/2,z_Box*1/3-Wall])cube([x_Box+4*Wall-f1-f2,Wall,Wall]);//Front Right
     }
 }
 module Front_neg(){
     difference(){
         union(){
-            translate([-x_Box/2-Wall,-y_Box/2-Wall,z_Box*2/3-Wall-tol])cube([f1,4*Wall+tol,z_Box/3+tol]);
-            translate([-x_Box/2-Wall+f1,-y_Box/2-Wall,3*Wall-tol])cube([x_Box+2*Wall-f1-f2,4*Wall,z_Box-4*Wall+tol]);
-            translate([x_Box/2+Wall-f2,-y_Box/2-Wall,z_Box*2/3-Wall-tol])cube([f2,4*Wall+tol,z_Box/3+tol]);
+            translate([-x_Box/2,-y_Box/2,z_Box*1/3-Wall-tol])cube([f1,4*Wall+tol,z_Box*2/3+tol+Wall]);
+            translate([-x_Box/2+f1-tol,-y_Box/2-tol,3*Wall-tol])cube([f2+2*tol,4*Wall+tol,z_Box-4*Wall+tol]);
+            translate([-x_Box/2+f1+f2,-y_Box/2,z_Box*1/3-Wall-tol])cube([x_Box+4*Wall-f1-f2,4*Wall+tol,z_Box*2/3+tol+Wall]);
         }  
-        translate([-x_Box/2-Wall,-y_Box/2-Wall,z_Box*2/3-Wall-tol])cube([f1,Wall/2+tol,Wall]);//Front Left
-        translate([-x_Box/2-Wall+f1,-y_Box/2-Wall,3*Wall])cube([x_Box+2*Wall-f1-f2,Wall/2+tol,Wall-tol]);//Front Middle
-        translate([x_Box/2+Wall-f2,-y_Box/2-Wall,z_Box*2/3-Wall-tol])cube([f2,Wall/2+tol,Wall]);//Front Right
+        translate([-x_Box/2,-y_Box/2,z_Box*1/3-Wall-tol])cube([f1-tol,Wall-tol,Wall]);//Front Left
+        translate([-x_Box/2+f1-tol,-y_Box/2+Wall+tol,3*Wall-tol])cube([f2+2*tol,Wall-tol,Wall]);//Front Middle
+        translate([-x_Box/2+f1+f2+tol,-y_Box/2,z_Box*1/3-Wall-tol])cube([x_Box+4*Wall-f1-f2-tol,Wall-tol,Wall]);//Front Right
     }
 }
 
 module Back(){
     difference(){
         union(){
-            translate([-x_Box/2-Wall,y_Box/2-3*Wall,z_Box*2/3-Wall])cube([b1+tol,4*Wall,z_Box/3]);
-            translate([-x_Box/2-Wall+b1+tol,y_Box/2-3*Wall+tol,3*Wall])cube([x_Box+2*Wall-b1-b2-2*tol,4*Wall,z_Box-4*Wall]);
-            translate([x_Box/2+Wall-b2-tol,y_Box/2-3*Wall,z_Box*2/3-Wall])cube([b2+tol,4*Wall,z_Box/3]);
+            translate([-x_Box/2,y_Box/2,z_Box*1/3-Wall])cube([b1,4*Wall,z_Box*2/3]);
+            translate([-x_Box/2+b1,y_Box/2,3*Wall])cube([b2,4*Wall,z_Box-4*Wall]);
+            translate([-x_Box/2+b1+b2,y_Box/2,z_Box*1/3-Wall])cube([x_Box+4*Wall-b1-b2,4*Wall,z_Box*2/3]);
         }
-        translate([-x_Box/2-Wall,y_Box/2+Wall/2,z_Box*2/3-Wall])cube([b1,Wall/2,Wall]);//Front Left
-        translate([-x_Box/2-Wall+b1,y_Box/2+Wall/2,3*Wall])cube([x_Box+2*Wall-b1-b2,Wall/2,Wall-tol]);//Front Middle
-        translate([x_Box/2+Wall-b2-tol,y_Box/2+Wall/2,z_Box*2/3-Wall])cube([b2+tol,Wall/2,Wall-tol]);//Front Right
+        translate([-x_Box/2,y_Box/2+3*Wall,z_Box*1/3-Wall])cube([b1,Wall,Wall]);//Front Left
+        translate([-x_Box/2+b1,y_Box/2+2*Wall,3*Wall])cube([b2,Wall,Wall]);//Front Middle
+        translate([-x_Box/2+b1+b2,y_Box/2+3*Wall,z_Box*1/3-Wall])cube([x_Box+4*Wall-b1-b2,Wall,Wall]);//Front Right
     }
 }
 module Back_neg(){
     difference(){
         union(){
-            translate([-x_Box/2-Wall,y_Box/2-3*Wall-tol,z_Box*2/3-Wall-tol])cube([b1,4*Wall+tol,z_Box/3+tol]);
-            translate([-x_Box/2-Wall+b1,y_Box/2-3*Wall,3*Wall-tol])cube([x_Box+2*Wall-b1-b2,4*Wall,z_Box-4*Wall+tol]);
-            translate([x_Box/2+Wall-b2,y_Box/2-3*Wall-tol,z_Box*2/3-Wall-tol])cube([b2,4*Wall+tol,z_Box/3+tol]);
+            translate([-x_Box/2,y_Box/2-tol,z_Box*1/3-Wall-tol])cube([b1-tol,4*Wall+tol,z_Box*2/3+tol+Wall]);
+            translate([-x_Box/2+b1-tol,y_Box/2,3*Wall-tol])cube([b2+2*tol,4*Wall,z_Box-4*Wall+tol]);
+            translate([-x_Box/2+b1+b2,y_Box/2-tol,z_Box*1/3-Wall-tol])cube([x_Box+4*Wall-b1-b2,4*Wall+tol,z_Box*2/3+tol+Wall]);
         }
-        translate([-x_Box/2-Wall,y_Box/2+Wall/2+tol,z_Box*2/3-Wall-tol])cube([b1,Wall/2-tol,Wall-tol]);//Front Left
-        translate([-x_Box/2-Wall+b1,y_Box/2+Wall/2,3*Wall])cube([x_Box+2*Wall-b1-b2,Wall/2+tol,Wall-tol]);//Front Middle
-        translate([x_Box/2+Wall-b2,y_Box/2+Wall/2+tol,z_Box*2/3-Wall-tol])cube([b2,Wall/2-tol,Wall-tol]);//Front Right
+        translate([-x_Box/2,y_Box/2+3*Wall+tol,z_Box*1/3-Wall-tol])cube([b1-tol,Wall,Wall]);//Front Left
+        translate([-x_Box/2+b1-tol,y_Box/2+2*Wall,3*Wall-tol])cube([b2+2*tol,Wall-tol,Wall]);//Front Middle
+        translate([-x_Box/2+b1+b2+tol,y_Box/2+3*Wall+tol,z_Box*1/3-Wall-tol])cube([x_Box+4*Wall-b1-b2+tol,Wall,Wall]);//Front Right
     }
 }
 
 module Right(){
     difference(){
         union(){
-            translate([x_Box/2-3*Wall,-y_Box/2-Wall,z_Box/3-Wall])cube([4*Wall,r1+tol,z_Box*2/3]);
-            translate([x_Box/2-3*Wall,-y_Box/2-Wall+r1+tol,3*Wall])cube([4*Wall,y_Box+2*Wall-r1-r2-2*tol,z_Box-4*Wall]);
-            translate([x_Box/2-3*Wall,y_Box/2+Wall-r2-tol,z_Box/3-Wall])cube([4*Wall,r2+tol,z_Box*2/3]);
+            translate([x_Box/2,-y_Box/2,z_Box*2/3-Wall])cube([4*Wall,r1,z_Box*1/3]);
+            translate([x_Box/2,-y_Box/2+r1,3*Wall])cube([4*Wall,r2,z_Box-4*Wall]);
+            translate([x_Box/2,-y_Box/2+r1+r2,z_Box*2/3-Wall])cube([4*Wall,y_Box+4*Wall-r1-r2,z_Box*1/3]);
         }
-        translate([x_Box/2-3*Wall,-y_Box/2-Wall,z_Box/3-Wall])cube([3.5*Wall,r1,Wall]);// Right Back
-        translate([x_Box/2-3*Wall,-y_Box/2-Wall+r1,3*Wall])cube([3.5*Wall,y_Box+2*Wall-r1-r2,Wall]); // Right Middle
-        translate([x_Box/2-3*Wall,y_Box/2+Wall-r2,z_Box/3-Wall])cube([3.5*Wall,r2,Wall]);// Right Front
+        translate([x_Box/2+3*Wall,-y_Box/2,z_Box*2/3-Wall])cube([Wall,r1,Wall]);// Right Back
+        translate([x_Box/2+2*Wall,-y_Box/2+r1,3*Wall])cube([Wall,r2,Wall]); // Right Middle
+        translate([x_Box/2+3*Wall,-y_Box/2+r1+r2,z_Box*2/3-Wall])cube([Wall,y_Box+4*Wall-r1-r2,Wall]);// Right Front
     }
 }
 module Right_neg(){
     difference(){
         union(){
-            translate([x_Box/2-3*Wall-tol,-y_Box/2-Wall,z_Box/3-Wall-tol])cube([4*Wall+tol,r1,z_Box*2/3]);
-            translate([x_Box/2-3*Wall,-y_Box/2-Wall+r1,3*Wall-tol])cube([4*Wall+tol,y_Box+2*Wall-r1-r2,z_Box-4*Wall]);
-            translate([x_Box/2-3*Wall-tol,y_Box/2+Wall-r2,z_Box/3-Wall-tol])cube([4*Wall+tol,r2,z_Box*2/3]);
+            translate([x_Box/2-tol,-y_Box/2,z_Box*2/3-Wall-tol])cube([4*Wall+2*tol,r1-tol,z_Box*1/3+tol]);
+            translate([x_Box/2,-y_Box/2+r1-tol,3*Wall-tol])cube([4*Wall+tol,r2+2*tol,z_Box-4*Wall+tol]);
+            translate([x_Box/2-tol,-y_Box/2+r1+r2,z_Box*2/3-Wall-tol])cube([4*Wall+2*tol,y_Box+4*Wall-r1-r2,z_Box*1/3+tol]);
         }
-        translate([x_Box/2-3*Wall-tol,-y_Box/2-Wall,z_Box/3-Wall-tol])cube([3.5*Wall,r1,Wall]);// Right Back
-        translate([x_Box/2-3*Wall,-y_Box/2-Wall+r1,3*Wall-tol])cube([3.5*Wall-tol,y_Box+2*Wall-r1-r2,Wall-tol]); // Right Middle
-        translate([x_Box/2-3*Wall-tol,y_Box/2+Wall-r2,z_Box/3-Wall-tol])cube([3.5*Wall,r2,Wall]);// Right Front
+        translate([x_Box/2+3*Wall+tol,-y_Box/2,z_Box*2/3-Wall-tol])cube([Wall,r1-tol,Wall]);// Right Back
+        translate([x_Box/2+2*Wall-tol,-y_Box/2+r1-tol,3*Wall-tol])cube([Wall,r2+2*tol,Wall]); // Right Middle
+        translate([x_Box/2+3*Wall+tol,-y_Box/2+r1+r2+tol,z_Box*2/3-Wall-tol])cube([Wall,y_Box+4*Wall-r1-r2,Wall]);// Right Front
     }
 }
 
 module Left(){
     difference(){
         union(){
-            translate([-x_Box/2-Wall,-y_Box/2-Wall,z_Box/3-Wall])cube([4*Wall-tol,l1+tol,z_Box*2/3]);
-            translate([-x_Box/2-Wall,-y_Box/2-Wall+l1+tol,3*Wall])cube([4*Wall,y_Box+2*Wall-l1-l2-2*tol,z_Box-4*Wall]);
-            translate([-x_Box/2-Wall,y_Box/2+Wall-l2-tol,z_Box/3-Wall])cube([4*Wall-tol,l2+tol,z_Box*2/3]);
+            translate([-x_Box/2,-y_Box/2,z_Box*2/3-Wall])cube([4*Wall,l1,z_Box*1/3]);
+            translate([-x_Box/2,-y_Box/2+l1,3*Wall])cube([4*Wall,l2,z_Box-4*Wall]);
+            translate([-x_Box/2,-y_Box/2++l1+l2,z_Box*2/3-Wall])cube([4*Wall,y_Box+4*Wall-l1-l2,z_Box*1/3]);
         }
-        translate([-x_Box/2-Wall/2,-y_Box/2-Wall,z_Box/3-Wall])cube([3.5*Wall,l1,Wall]);// Left Back
-        translate([-x_Box/2-Wall/2,-y_Box/2-Wall+l1,3*Wall])cube([3.5*Wall,y_Box+2*Wall-l1-l2,Wall]); // Left Middle
-        translate([-x_Box/2-Wall/2,y_Box/2+Wall-l2,z_Box/3-Wall])cube([3.5*Wall,l2,Wall]);// Left Front
+        translate([-x_Box/2,-y_Box/2,z_Box*2/3-Wall])cube([Wall,l1,Wall]);// Left Back
+        translate([-x_Box/2+Wall-tol,-y_Box/2+l1,3*Wall])cube([Wall,l2,Wall]); // Left Middle
+        translate([-x_Box/2,-y_Box/2+l1+l2,z_Box*2/3-Wall])cube([Wall,y_Box+4*Wall-l1-l2,Wall]);// Left Front
     }
 }
 module Left_neg(){
     difference(){
         union(){
-            translate([-x_Box/2-Wall,-y_Box/2-Wall,z_Box/3-Wall-tol])cube([4*Wall,l1,z_Box*2/3]);
-            translate([-x_Box/2-Wall,-y_Box/2-Wall+l1,3*Wall-tol])cube([4*Wall,y_Box+2*Wall-l1-l2,z_Box-4*Wall]);
-            translate([-x_Box/2-Wall,y_Box/2+Wall-l2,z_Box/3-Wall-tol])cube([4*Wall,l2,z_Box*2/3]);
+            translate([-x_Box/2-tol,-y_Box/2,z_Box*2/3-Wall-tol])cube([4*Wall+2*tol,l1-tol,z_Box*1/3+tol]);
+            translate([-x_Box/2-tol,-y_Box/2+l1-tol,3*Wall-tol])cube([4*Wall,l2+3*tol,z_Box-4*Wall+tol]);
+            translate([-x_Box/2-tol,-y_Box/2+l1+l2+tol,z_Box*2/3-Wall-tol])cube([4*Wall+2*tol,y_Box+4*Wall-l1-l2+tol,z_Box*1/3+tol]);
         }
-        translate([-x_Box/2-Wall/2+tol,-y_Box/2-Wall,z_Box/3-Wall-tol])cube([3.5*Wall-tol,l1,Wall]);// Left Back
-        translate([-x_Box/2-Wall/2+tol,-y_Box/2-Wall+l1,3*Wall-tol])cube([3.5*Wall-tol,y_Box+2*Wall-l1-l2,Wall-tol]); // Left Middle
-        translate([-x_Box/2-Wall/2+tol,y_Box/2+Wall-l2,z_Box/3-Wall-tol])cube([3.5*Wall-tol,l2,Wall]);// Left Front
+        translate([-x_Box/2-tol,-y_Box/2,z_Box*2/3-Wall-tol])cube([Wall,l1-tol,Wall]);// Left Back
+        translate([-x_Box/2+Wall+tol,-y_Box/2+l1-tol,3*Wall-tol])cube([Wall,l2+2*tol,Wall]); // Left Middle
+        translate([-x_Box/2-tol,-y_Box/2+l1+l2+tol,z_Box*2/3-Wall-tol])cube([Wall,y_Box+4*Wall-l1-l2,Wall]);// Left Front
     }
 }
 
 module Top_neg(){
-    translate([-x_Box/2-1.5*Wall-tol,-y_Box/2-1.5*Wall-tol,0])cube([x_Box+3*Wall+2*tol,y_Box+3*Wall+tol,z_Box-Wall]);  
+    translate([-x_Box/2-1.5*Wall-tol+2*Wall,-y_Box/2-1.5*Wall-tol+2*Wall,0])cube([x_Box+3*Wall+2*tol,y_Box+3*Wall+2*tol,z_Box-Wall]);  
 }
 
 module Power_Switch(){
-    translate([x_Box/2+Wall-r_Switch-5*Wall,-y_Box/2-Wall,r_Switch+pos_z_Switch])rotate([-90,0,0])cylinder(r=r_Switch+tol,h=2*Wall+2*tol,$fn=Smoothness);
+    translate([x_Box/2+Wall-r_Switch-5*Wall,-y_Box/2,r_Switch+pos_z_Switch])rotate([-90,0,0])cylinder(r=r_Switch+tol,h=2*Wall+2*tol,$fn=Smoothness);
 }
 
 module Switch(){
@@ -502,20 +503,20 @@ module Labels(){
     translate([x_Box/2-17,y_Box/2-27.5,z_Box-Wall/2])linear_extrude(h=Wall/2)text("v2.1",size=5);
     translate([-x_Box/2+10,y_Box/2-45,z_Box-Wall/2])linear_extrude(h=Wall/2)text("An open hardware LED Stimulator",size=5.5);
     
-    translate([-x_Box/2-Wall/2,32,z_Box/2+6])rotate([90,0,0])rotate([0,-90,0])linear_extrude(h=Wall/2)text("Blanking",size=5);
-    translate([-x_Box/2-Wall/2,29,z_Box/2-1])rotate([90,0,0])rotate([0,-90,0])linear_extrude(h=Wall/2)text("Signal",size=5);
+    translate([-x_Box/2+Wall,32+Wall,z_Box/2+7])rotate([90,0,0])rotate([0,-90,0])linear_extrude(h=Wall/2)text("Blanking",size=4.5);
+    translate([-x_Box/2+Wall,29+Wall,z_Box/2])rotate([90,0,0])rotate([0,-90,0])linear_extrude(h=Wall/2)text("Signal",size=4.5);
     
-    translate([-x_Box/2-Wall/2,-13,z_Box/2+6])rotate([90,0,0])rotate([0,-90,0])linear_extrude(h=Wall/2)text("Trigger",size=5);
-    translate([-x_Box/2-Wall/2,-11,z_Box/2-1])rotate([90,0,0])rotate([0,-90,0])linear_extrude(h=Wall/2)text("Channel",size=5);
+    translate([-x_Box/2+Wall,-13+Wall,z_Box/2+7])rotate([90,0,0])rotate([0,-90,0])linear_extrude(h=Wall/2)text("Trigger",size=4.5);
+    translate([-x_Box/2+Wall,-11+Wall,z_Box/2])rotate([90,0,0])rotate([0,-90,0])linear_extrude(h=Wall/2)text("Channel",size=4.5);
     
-    translate([x_Box/2+Wall/2,-12,z_Box/2+6])rotate([90,0,0])rotate([0,90,0])linear_extrude(h=Wall/2)text("Power in",size=5);
-    translate([x_Box/2+Wall/2,-9,z_Box/2-2])rotate([90,0,0])rotate([0,90,0])linear_extrude(h=Wall/2)text("5 - 30V",size=5);
+    translate([x_Box/2+3*Wall,-12,z_Box/2+6])rotate([90,0,0])rotate([0,90,0])linear_extrude(h=Wall/2)text("Power in",size=5);
+    translate([x_Box/2+3*Wall,-9,z_Box/2-2])rotate([90,0,0])rotate([0,90,0])linear_extrude(h=Wall/2)text("5 - 30V",size=5);
     
-    translate([62.5,y_Box/2+Wall/2,z_Box/2+15])rotate([90,0,180])linear_extrude(h=Wall/2)text("LED Channel",size=5);
-    translate([17,y_Box/2+Wall/2,z_Box/2+15])rotate([90,0,180])linear_extrude(h=Wall/2)text("1",size=5);
-    translate([7,y_Box/2+Wall/2,z_Box/2+15])rotate([90,0,180])linear_extrude(h=Wall/2)text("2",size=5);
-    translate([-3.25,y_Box/2+Wall/2,z_Box/2+15])rotate([90,0,180])linear_extrude(h=Wall/2)text("3",size=5);
-    translate([-13,y_Box/2+Wall/2,z_Box/2+15])rotate([90,0,180])linear_extrude(h=Wall/2)text("4",size=5);
+    translate([62.5,y_Box/2+3*Wall,z_Box/2+15])rotate([90,0,180])linear_extrude(h=Wall/2)text("LED Channel",size=5);
+    translate([17,y_Box/2+3*Wall,z_Box/2+15])rotate([90,0,180])linear_extrude(h=Wall/2)text("1",size=5);
+    translate([7,y_Box/2+3*Wall,z_Box/2+15])rotate([90,0,180])linear_extrude(h=Wall/2)text("2",size=5);
+    translate([-3.25,y_Box/2+3*Wall,z_Box/2+15])rotate([90,0,180])linear_extrude(h=Wall/2)text("3",size=5);
+    translate([-13,y_Box/2+3*Wall,z_Box/2+15])rotate([90,0,180])linear_extrude(h=Wall/2)text("4",size=5);
 
 }
 
@@ -577,10 +578,13 @@ module LED_Cables(){
 module Potentiometer()translate([0,y_Box/2-y_pot,pos_z_pot+Wall/2]){
     translate([-x_pot/2,0,0])cube([x_pot,y_pot,z_pot]);
     
-    translate([d_pot/2,y_pot,z_pot2])rotate([-90,0,0])cylinder(r=r_pot,h=2*Wall,$fn=Smoothness);
-    translate([-d_pot/2,y_pot,z_pot2])rotate([-90,0,0])cylinder(r=r_pot,h=2*Wall,$fn=Smoothness);
-    translate([d_pot*3/2,y_pot,z_pot2])rotate([-90,0,0])cylinder(r=r_pot,h=2*Wall,$fn=Smoothness);
-    translate([-d_pot*3/2,y_pot,z_pot2])rotate([-90,0,0])cylinder(r=r_pot,h=2*Wall,$fn=Smoothness);
+    for (pp = [pot_pitch/2:pot_pitch:pot_pitch/2+((n_LED/2-1)*pot_pitch)]){
+        translate([pp,y_pot+2*Wall,z_pot2])rotate([-90,0,0])cylinder(r=r_pot,h=2*Wall,$fn=Smoothness);
+    }
+    for (ppp = [-pot_pitch/2:-pot_pitch:-pot_pitch/2-((n_LED/2-1)*pot_pitch)]){
+        translate([ppp,y_pot+2*Wall,z_pot2])rotate([-90,0,0])cylinder(r=r_pot,h=2*Wall,$fn=Smoothness);
+    }
+
     
 }
 

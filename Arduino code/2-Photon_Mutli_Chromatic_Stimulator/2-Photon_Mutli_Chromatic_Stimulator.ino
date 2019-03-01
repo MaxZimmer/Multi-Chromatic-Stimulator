@@ -83,7 +83,7 @@ const int16_t array_Time[] PROGMEM = {
     #define   data            4             // SPI connection, DIN connected to pin D4
     #define   clock           5             // SPI connection, CLK connected to pin D5
     #define   latch           6             // SPI connection, LAT connected to pin D6
-    //#define   oe              2           // Optional feature to prevent LED to light up when powering up the TLC board
+    //#define   oe              2           // Optional feature to prevent LED to light up when powering up the TLC board connected to pin D2
     const int      pSyncOut      =   A0;    // Trigger channel must be connected to pin A0
     const int      pBlank        =   3;     // Blanking signal channel must be connected to pin D3
 #endif
@@ -92,7 +92,7 @@ const int16_t array_Time[] PROGMEM = {
     #define   data           18             // SPI connection, DIN connected to pin MOSI/18
     #define   clock           5             // SPI connection, CLK connected to pin SCK/5
     #define   latch          21             // SPI connection, LAT connected to pin 21
-    //#define   oe            25            // Optional feature to prevent LED to light up when powering up the TLC board  
+    //#define   oe            25            // Optional feature to prevent LED to light up when powering up the TLC board connected to pin A1/DAC1
     const int      pSyncOut      =   26;    // Trigger channel must be connected to pin A0/DAC2
     const int      pBlank        =   36;    // Blanking signal channel must be connected to pin A4/36
 #endif
@@ -233,34 +233,34 @@ void PlayArrays() {
 
         if(0 < ArrayPosition <= nArrayEntries){
            /* Defining LED values according to the current array position */
-               stled1      =   array1[ArrayPosition];     // Set Red LED value according to its position within the array
-               stled2      =   array2[ArrayPosition];     // Set Green LED value according to its position within the array
-               stled3      =   array3[ArrayPosition];     // Set Blue LED value according to its position within the array
-               stled4      =   array4[ArrayPosition];     // Set UV LED value according to its position within the array  
+               stled1      =   array1[ArrayPosition];     // Set First LED value according to its position within the array
+               stled2      =   array2[ArrayPosition];     // Set Second LED value according to its position within the array
+               stled3      =   array3[ArrayPosition];     // Set Third LED value according to its position within the array
+               stled4      =   array4[ArrayPosition];     // Set Fourth LED value according to its position within the array  
         
            /* Feeding LED values according to the current position array */    
-              tlc.setPWM(led1,stled1);                    // Update Red LED value according to its position within the array
-              tlc.setPWM(led2,stled2);                    // Update Green LED value according to its position within the array
-              tlc.setPWM(led3,stled3);                    // Update Blue LED value according to its position within the array
-              tlc.setPWM(led4,stled4);                    // Update UV LED value according to its position within the array
-              tlc.setPWM(proxy_led1,stled1);              // Update Red LED marker value according to its position within the array
-              tlc.setPWM(proxy_led2,stled2);              // Update Green LED marker value according to its position within the array
-              tlc.setPWM(proxy_led3,stled3);              // Update Blue LED marker value according to its position within the array
-              tlc.setPWM(proxy_led4,stled4);              // Update UV LED marker value according to its position within the array
+              tlc.setPWM(led1,stled1);                    // Update First LED value according to its position within the array
+              tlc.setPWM(led2,stled2);                    // Update Second LED value according to its position within the array
+              tlc.setPWM(led3,stled3);                    // Update Third LED value according to its position within the array
+              tlc.setPWM(led4,stled4);                    // Update Fourt LED value according to its position within the array
+              tlc.setPWM(proxy_led1,stled1);              // Update First LED marker value according to its position within the array
+              tlc.setPWM(proxy_led2,stled2);              // Update Second LED marker value according to its position within the array
+              tlc.setPWM(proxy_led3,stled3);              // Update Third LED marker value according to its position within the array
+              tlc.setPWM(proxy_led4,stled4);              // Update Fourth LED marker value according to its position within the array
               tlc.write();
         }
 
         if(ArrayPosition == nArrayEntries){
             ArrayPosition = 1;                          // Reset the position array and skip the preadaptation (ArrayPosition = 0)
                
-            tlc.setPWM(led1,array1[1]);                 // Update Red LED to its firs array position value
-            tlc.setPWM(led2,array2[1]);                 // Update Green LED to its firs array position value
-            tlc.setPWM(led3,array3[1]);                 // Update Blue LED to its firs array position value
-            tlc.setPWM(led4,array4[1]);                 // Update UV LED to its firs array position value
-            tlc.setPWM(proxy_led1,array1[1]);           // Update Red LED marker to its firs array position value
-            tlc.setPWM(proxy_led2,array2[1]);           // Update Green LED marker to its firs array position value
-            tlc.setPWM(proxy_led3,array3[1]);           // Update Blue LED marker to its firs array position value
-            tlc.setPWM(proxy_led4,array4[1]);           // Update UV LED marker to its firs array position value
+            tlc.setPWM(led1,array1[1]);                 // Update First LED to its firs array position value
+            tlc.setPWM(led2,array2[1]);                 // Update Second LED to its firs array position value
+            tlc.setPWM(led3,array3[1]);                 // Update Third LED to its firs array position value
+            tlc.setPWM(led4,array4[1]);                 // Update Fourth LED to its firs array position value
+            tlc.setPWM(proxy_led1,array1[1]);           // Update First LED marker to its firs array position value
+            tlc.setPWM(proxy_led2,array2[1]);           // Update Second LED marker to its firs array position value
+            tlc.setPWM(proxy_led3,array3[1]);           // Update Third LED marker to its firs array position value
+            tlc.setPWM(proxy_led4,array4[1]);           // Update Fourth LED marker to its firs array position value
             tlc.write();       
 
             iLoop += 1;                                 // Move to the next loop      
@@ -272,14 +272,14 @@ void PlayArrays() {
     }
 
     if(iLoop == nLoops){                                // When Array has completed its last loop 
-      tlc.setPWM(led1,0);                               // Set Red LED to 0
-      tlc.setPWM(led2,0);                               // Set Green LED to 0
-      tlc.setPWM(led3,0);                               // Set Blue LED to 0 
-      tlc.setPWM(led4,0);                               // Set UV LED to 0
-      tlc.setPWM(proxy_led1,0);                         // Set Red LED marker to 0
-      tlc.setPWM(proxy_led2,0);                         // Set Green LED marker to 0
-      tlc.setPWM(proxy_led3,0);                         // Set Blue LED marker to 0 
-      tlc.setPWM(proxy_led4,0);                         // Set UV LED marker to 0
+      tlc.setPWM(led1,0);                               // Set First LED to 0
+      tlc.setPWM(led2,0);                               // Set Second LED to 0
+      tlc.setPWM(led3,0);                               // Set Third LED to 0 
+      tlc.setPWM(led4,0);                               // Set Fourth LED to 0
+      tlc.setPWM(proxy_led1,0);                         // Set First LED marker to 0
+      tlc.setPWM(proxy_led2,0);                         // Set Second LED marker to 0
+      tlc.setPWM(proxy_led3,0);                         // Set Third LED marker to 0 
+      tlc.setPWM(proxy_led4,0);                         // Set Fourth LED marker to 0
       tlc.write();   
       
       PulseCount = 0;                                   // Reset Pulse counter

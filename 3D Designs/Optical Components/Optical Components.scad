@@ -6,8 +6,8 @@
 
 // Switches
 LCP30 = 1;
-Mirror_Holder = 1;
-Dichroic_Frame = 1;
+Mirror_Holder = 10;
+Dichroic_Frame = 10;
 
 
 // display variables
@@ -43,7 +43,7 @@ y_Groove_LCP30 = 12.9;
 x_arm_LCP30 = 16.5; //arm width
 y_arm_LCP30 = 14; //arm length
 x_ext_LCP30 = 96.3; //module diagonal length
-pos_z_Screw_LCP30 = 7.1;
+pos_z_Screw_LCP30 = z_LCP30-7.1;
 pos_x_screw_LCP30 = 67.3/2;
 pos_y_screw_LCP30 = 26.7/2;
 
