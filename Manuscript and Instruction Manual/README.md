@@ -30,7 +30,9 @@ The device consists of a custom-designed PCB, an [ESP32 development board](https
 
 <p align="center"><h4 align="left">1 – Obtaining the custom-designed PCB</h4></p>
 
-From the GitHub repository, one can find the [gerber.zip folder](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/tree/master/PCB/Stimulator) needed to order the PCB to any manufacturer company (i.e. https://jlcpcb.com). Ordering a minimum of 5 units should not cost more than £10. Gerber files were designed with [KiCad 5.0](http://kicad-pcb.org/). Schematics and PCB footprint can be downloaded and modified from the same repository if need be.
+From the GitHub repository, one can find the [gerber.zip folder](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/tree/master/PCB/Stimulator) needed to order the PCB to any manufacturer company (i.e. https://jlcpcb.com).
+
+Ordering a minimum of 5 units should not cost more than £10. Gerber files were designed with [KiCad 5.0](http://kicad-pcb.org/). Schematics and PCB footprint can be downloaded and modified from the same repository if need be.
 
 
 ****
