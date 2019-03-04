@@ -97,9 +97,9 @@ Follow the installation instructions from the [Espressif repository](https://git
 
 ## Operating the Stimulator
 <p align="center"><h4 align="left">The code is organised in five distinct part:</h4></p>
-Stimulus Parameters
+  Stimulus Parameters
 
-	Here, the user determines the sequence of his looping stimulus.
+Here, the user determines the sequence of his looping stimulus.
 
 –	The array_LED# corresponds to the sequence of each LED#. The value corresponds to the LED power and CAN ONLY TAKE A VALUE FROM 0 TO 100, where 0 corresponds to no light and 100 to max light intensity
 
@@ -111,60 +111,60 @@ Stimulus Parameters
 
 ***
 
-Microcontroller Board Selection
+  Microcontroller Board Selection
 
-	This is where the user defines if he is using an ESP32 or an Arduino Nano
+This is where the user defines if he is using an ESP32 or an Arduino Nano
 
 ***
 
-Internal Definitions
+  Internal Definitions
 
-	This is the main definition part of the code which can be modified to:
+This is the main definition part of the code which can be modified to:
 
 -	Add more LEDs than the 4 main and 4 proxy defined by default. (Global variables, the LED pins correspond to the pin number on the TLC5947).
--
+
 -	Adjust the trigger duration (25ms by default).
--
+
 -	Adjust the Trigger interval (1000 ms by default)
--
-***
-
-Internal Methods
-
-	This is the main core of the code and should not be structurally changed apart from adding more LEDs (straight forward)
 
 ***
 
-Main Loop
+  Internal Methods
 
- 	This is where the stimuli controls are defined. By default, when compile window is open (magnifying glass on the top right corner) and the baud rate at the bottom right of the window has be changed to 115200, a manual command will trigger a stimulus:
+This is the main core of the code and should not be structurally changed apart from adding more LEDs (straight forward)
 
-	By default:
+***
+
+  Main Loop
+
+This is where the stimuli controls are defined. By default, when compile window is open (magnifying glass on the top right corner) and the baud rate at the bottom right of the window has be changed to 115200, a manual command will trigger a stimulus:
+
+By default:
 
 -	a – Play stimulus at max power
--
+
 -	b – Play stimulus at min power
--
+
 -	0 – Turn off all LEDs stop any stimulus being played and reset the loop
--
+
 -	+ – Turn on all LED to max power
--
+
 -	- – Turn on all LED to min power
--
+
 -	1 – Turn First LED to max power
--
+
 -	2 – Turn First LED to min power
--
+
 -	3 – Turn Second LED to min power
--
+
 -	4 – Turn Second LED to min power
--
+
 -	5 – Turn Third LED to min power
--
+
 -	6 – Turn Third LED to min power
--
+
 -	7 – Turn Fourth LED to min power
--
+
 -	8 – Turn Fourth LED to min power
 
 Important to note, obviously the stimulation will only be played if a blanking signal is sent to the board.
