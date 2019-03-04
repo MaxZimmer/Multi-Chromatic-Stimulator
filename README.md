@@ -3,7 +3,7 @@
 <h4 align="center">An OpenSource LED stimulator for visual and optogenetics stimulation in combination with 2-photon recording</h4>
 <p align="center"><h6 align="right">by M.J.Y. Zimmermann, A.M. Chagas, P. Bartel, T. Baden</h6></p>
 
-<p align="right">This project is licensed under the [GNU General Public License v3.0](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/LICENSE)</p>
+This project is licensed under the [GNU General Public License v3.0](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/LICENSE)
 
 Here we describe an effective, low-cost, opensource LED stimulator, designed to be used in combination with a 2-photon microscope. The design is built around an open-source development board and off-the-shelf components. It has been conceived to be assembled and used without the need for advanced electronics skills.
 
