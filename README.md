@@ -10,6 +10,7 @@ Here we describe an effective, low-cost, opensource LED stimulator, designed to 
 The stimulator synchronises the light stimulation with the sample scanning in order to prevent interferences with the light emitting probe recording. Our system only requires simple electronics components to be assemble and can be combined.
 
 <h3>[Instruction Manual]</h3>(https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/tree/master/Manuscript%20and%20Instruction%20Manual)
+</h3>
 
 ***
 
