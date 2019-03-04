@@ -88,6 +88,7 @@ The proxy LED are markers for the experimenter to have a ready visualisation of 
 (Tessa picture)
 
 Finally, any translucid material could be placed in the LED holder slot in order to diffuse the proxy LED light (In our example, we used a piece of thin Teflon)
+
 (TESSA PICTURE OF THE LED HOLDER Supplementary Figure S7)
 
 ***
