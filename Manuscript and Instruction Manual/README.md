@@ -181,9 +181,9 @@ By default:
 
 -	0 –> Turn off all LEDs stop any stimulus being played and reset the loop
 
--	 + –> Turn on all LED to max power
+-	'+' –> Turn on all LED to max power
 
--	 - –> Turn on all LED to min power
+-	'-' –> Turn on all LED to min power
 
 -	1 –> Turn First LED to max power
 
