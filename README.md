@@ -3,7 +3,7 @@
 <h4 align="center">An OpenSource LED stimulator for visual and optogenetics stimulation in combination with 2-photon recording</h4>
 <p align="center"><h6 align="right">by M.J.Y. Zimmermann, A.M. Chagas, P. Bartel, T. Baden</h6></p>
 
-This project is licensed under the [GNU General Public License v3.0](https://github.com/BadenLab/Openspritzer/blob/master/LICENSE)
+This project is licensed under the [GNU General Public License v3.0](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/LICENSE)
 
 [Instruction Manual](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/tree/master/Manuscript%20and%20Instruction%20Manual)
 
