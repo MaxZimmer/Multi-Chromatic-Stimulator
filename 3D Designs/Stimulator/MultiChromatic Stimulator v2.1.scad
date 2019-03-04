@@ -1,10 +1,14 @@
 /* 
 
 
-        OpenSpritzer v1.3, an open hardware pressure ejection system.
+                            Multi LED Stimulator v2.1.
+                    
+        An opensource LED stimulator for visual and optogenetics stimulation in combination with 2-photon recording
 
-This 3D file is designed for the OpenSpritzer project components and its customed PCB
-Source : https://github.com/BadenLab/Openspritzer
+
+
+This 3D file is designed for the Multi-Chromatic Stimulator project components and its customed PCB
+Source : https://github.com/BadenLab/Multi-Chromatic-Stmulator
 This project is Open Source licensed, released under CERN OHL v1.2
 
 by M.J.Y. Zimmermann, 2018.12.11
