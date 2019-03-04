@@ -5,6 +5,10 @@
 
 This project is licensed under the [GNU General Public License v3.0](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/LICENSE)
 
+Here we describe an effective, low-cost, opensource LED stimulator, designed to be used in combination with a 2-photon microscope. The design is built around an open-source development board and off-the-shelf components. It has been conceived to be assembled and used without the need for advanced electronics skills.
+
+The stimulator synchronises the light stimulation with the sample scanning in order to prevent interferences with the light emitting probe recording. Our system only requires simple electronics components to be assemble and can be combined.
+
 [Instruction Manual](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/tree/master/Manuscript%20and%20Instruction%20Manual)
 
 ***
