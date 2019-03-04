@@ -2,8 +2,6 @@
 <h1 align="center">Instruction Manual</h1></p>
 <h1 align="center">Multi-Chromatic Stimulator</h1>
 
-This project is licensed under the [GNU General Public License v3.0](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/LICENSE)
-
 ***
 
 - [Overview](#Overview)
@@ -180,6 +178,10 @@ On the arduino code there is a second tab called “LED_values” which hard-cod
 On the default script we proposed 2 distinct max values (oddly named here max and min power) that can be called individually. The purpose here is to have the opportunity to use the same stimulus sequence at two different light intensities. Off course more can be added manually by the user.
 
 For the calibration, we suggest setting the max_LED# value at 4095 (Full power) and use successively a spectrometer and a powermeter. To adjust the LED brightness, the user should first use the trimmer potentiometer at the back of the stimulator then finely tune the desired max power in the code. When the LED value (0-100) will be entered in the stimulus sequence, it will automatically be mapped to 0-max_LED#
+
+***
+
+This project is licensed under the [GNU General Public License v3.0](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/LICENSE)
 
 ***
 
