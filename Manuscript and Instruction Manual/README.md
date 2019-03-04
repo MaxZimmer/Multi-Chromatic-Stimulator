@@ -1,8 +1,6 @@
 ﻿<p align="right"><img src="https://github.com/BadenLab/Zebrafish-visual-space-model/blob/master/Images/Logo.png" width="300"/>
 <h1 align="center">Instruction Manual</h1></p>
 <h1 align="center">Multi-Chromatic Stimulator</h1>
-<h4 align="center">An OpenSource LED stimulator for visual and optogenetics stimulation in combination with 2-photon recording</h4>
-<p align="center"><h6 align="right">by M.J.Y. Zimmermann, A.M. Chagas, P. Bartel, T. Baden</h6></p>
 
 This project is licensed under the [GNU General Public License v3.0](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/LICENSE)
 
@@ -18,8 +16,7 @@ This project is licensed under the [GNU General Public License v3.0](https://git
 
 ## Overview
 <img align="right" width="325" height="225" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Components.png">
-This document contains detailed assembly instructions, a software guideline to customize stimuli, and includes a parts list. The Arduino code and 3D printing files (SCAD and STL) can be downloaded [here](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/tree/master/3D%20Designs/Stimulator)
-, and further modified to fit customise purposes. The aim of this device is to finely control LEDs used in combination with a 2-photon microscope.
+This document contains detailed assembly instructions, a software guideline to customize stimuli, and includes a parts list. The Arduino code and 3D printing files (SCAD and STL) can be downloaded [here](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/tree/master/3D%20Designs/Stimulator) , and further modified to fit customise purposes. The aim of this device is to finely control LEDs used in combination with a 2-photon microscope.
 The device consists of a custom-designed PCB, an [ESP32 development board](https://learn.adafruit.com/adafruit-huzzah32-esp32-feather) (or an Arduino Nano if the stimulator does not need to be combined with a 2 photon microscope), a [LED driver](https://learn.adafruit.com/tlc5947-tlc59711-pwm-led-driver-breakout/overview) and various off-the-shelf components.
 
 ***
