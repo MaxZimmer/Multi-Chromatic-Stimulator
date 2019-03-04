@@ -24,14 +24,14 @@ The device consists of a custom-designed PCB, an [ESP32 development board](https
 
 ## Assembling the stimulator
 
-<p align="center"><h6 align="left">1 – Obtaining the custom-designed PCB</h6></p>
+<p align="center"><h4 align="left">1 – Obtaining the custom-designed PCB</h4></p>
 <img align="right" width="325" height="225" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Scematics.png">
 From the GitHub repository, one can find the [gerber.zip folder](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/tree/master/PCB/Stimulator) needed to order the PCB to any manufacturer company (i.e. https://jlcpcb.com). Ordering a minimum of 5 units should not cost more than £10. Gerber files were designed with [KiCad 5.0](http://kicad-pcb.org/). Schematics and PCB footprint can be downloaded and modified from the same repository if need be.
 
 
 ****
 
-<p align="center"><h6 align="left">2 – Soldering the custom-designed PCB</h6></p>
+<p align="center"><h4 align="left">2 – Soldering the custom-designed PCB</h4></p>
 <img align="left" width="325" height="225" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/PCB01.png">
 The board is self-explanatory. On the left, two options are available, one for the Arduino (close rows) the other for the ESP (spread rows). There is no need to solder more JST pins that the number of LED required for the desired stimulator. The two resistors at the bottom are a voltage divider for the ESP32 only (There’s no need to solder any resistor here if the Arduino option is chosen). ESP32 unlike Arduino Nano, works on a 3.3V logic; no higher tension should be sent to this board. Since most TTL deliver 5V pulses, we selected a 220/470Ω divider to bring a 5V blanking signal into a 3.3V input. Depending on the blanking signal generator used, this divider can be modified to fit one’s personal design or bypassed by only bridging the 220Ω resistor.
 ## Supplementary Figure S3 TESSA PICTURE
@@ -44,15 +44,10 @@ The Adafruit TLC5947 LED driver is a constant current driver configured by defau
 
 
 
-
-**
-***
-****
-*****
-******
-*******
-********
-*********
+<p align="center"><h4 align="left">3 – Mounting the potentiometer</h4></p>
+<img align="right" width="325" height="225" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Potentiometer%20PCB.png">
+In order to finely adjust each LED power, we added multiple-turn trimmer potentiometers to our design. A simple solution is to manufacture the appropriate PCB board (We provide multiple options on the [GitHub repository](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/tree/master/PCB/Potentiometer%20Mounts)). Otherwise, one can make its own little PCB by using a solderable board. 
+Each potentiometer connects its ClockWise (pin 3) to the LED (+) stimulator JST pin; and its Base (pin 2) to the LED (+) leg. The LED (-) stimulator JST pin connects the LED (-) leg directly.
 
 
 
