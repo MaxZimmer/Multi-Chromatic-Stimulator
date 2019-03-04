@@ -41,7 +41,7 @@ Schematics and PCB footprint can be downloaded and modified from the same reposi
 ****
 
 <p align="center"><h4 align="left">2 – Soldering the custom-designed PCB</h4></p>
-<img align="left" width="350" height="225" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/PCB01.png">
+<img align="left" width="375" height="225" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/PCB01.png">
 
 The board is self-explanatory. On the left, two options are available, one for the Arduino (close rows) the other for the ESP (spread rows). There is no need to solder more JST pins that the number of LED required for the desired stimulator. The two resistors at the bottom are a voltage divider for the ESP32 only (There’s no need to solder any resistor here if the Arduino option is chosen).
 
