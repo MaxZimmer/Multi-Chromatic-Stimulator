@@ -51,10 +51,12 @@ Each potentiometer connects its ClockWise (pin 3) to the LED (+) stimulator JST 
 ***
 
 <p align="center"><h4 align="left">4 – Printing the Stimulator box</h4></p>
+
 [STL files](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/tree/master/3D%20Designs/Stimulator/STL%20Files) can be found on the GitHub repository and print directly if the user wishes to go for the default design (4 stimulation LEDs + 4 proxy LEDs) and [BoM](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Bills%20of%20Materials/BOM%20-%20Stimulator.ods). However, [SCAD files](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/3D%20Designs/Optical%20Components/Optical%20Components.scad) are also available and easily adjustable for personalised design.
 We used [OpenSCAD](www.openscad.com) to design the stimulator box. The tolerance of the printer can be adjusted in the “USER Parameters” section of the script (tol =0.1; by default, this value is used for Prusa MK3 and Ultimaker 2). Each component can be displayed/design individually in the “Switches” section. Variables such as LED number (4 by default) and the potentiometer board dimensions can be adjusted in the “Component Parameters” section.
 The PCB is screwed to the “Bottom” part of the box by using M3 screws and nuts. The potentiometer board adjusts itself with the “Back” part of the box, and the trimmers should adapt to their respective holes exactly.
 All part should fit tightly together and are maintained together by 4 M3*50mm socket screws.
+
 <img width="600" height="225" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/reference%20resistor%20vs%20output%20current.png">
 
 ***
