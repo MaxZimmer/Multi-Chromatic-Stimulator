@@ -44,7 +44,7 @@ The Adafruit TLC5947 LED driver is a constant current driver configured by defau
 ****
 
 <p align="center"><h4 align="left">3 – Mounting the potentiometer</h4></p>
-<img align="right" width="325" height="225" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Potentiometer%20PCB.png">
+<img align="right" width="300" height="192" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Potentiometer%20PCB.png">
 
 In order to finely adjust each LED power, we added multiple-turn trimmer potentiometers to our design. A simple solution is to manufacture the appropriate PCB board (We provide multiple options on the [GitHub repository](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/tree/master/PCB/Potentiometer%20Mounts)). Otherwise, one can make its own little PCB by using a solderable board.
 Each potentiometer connects its ClockWise (pin 3) to the LED (+) stimulator JST pin; and its Base (pin 2) to the LED (+) leg. The LED (-) stimulator JST pin connects the LED (-) leg directly.
