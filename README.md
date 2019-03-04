@@ -5,18 +5,12 @@
 
 This project is licensed under the [GNU General Public License v3.0](https://github.com/BadenLab/Openspritzer/blob/master/LICENSE)
 
-Adafruit HUZZAH32 - ESP32 Feather https://learn.adafruit.com/adafruit-huzzah32-esp32-feather
+[Instruction Manual](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/tree/master/Manuscript%20and%20Instruction%20Manual)
 
-Adafruit TLC5947 https://learn.adafruit.com/tlc5947-tlc59711-pwm-led-driver-breakout/overview
-
-
-ESP32 driver : https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers
-
-Arduino core for ESP32 chip https://github.com/espressif/arduino-esp32#using-through-arduino-ide
-
+***
 
 <img align="center" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Visual%20Stimulator.png" width="1000"/>
+
+***
+
 <img align="center" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Schematics.png" width="1000"/>
-
-
-</p>
