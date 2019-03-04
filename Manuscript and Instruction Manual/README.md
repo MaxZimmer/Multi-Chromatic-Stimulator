@@ -58,7 +58,7 @@ We used [OpenSCAD](www.openscad.com) to design the stimulator box. The tolerance
 The PCB is screwed to the “Bottom” part of the box by using M3 screws and nuts. The potentiometer board adjusts itself with the “Back” part of the box, and the trimmers should adapt to their respective holes exactly.
 All part should fit tightly together and are maintained together by 4 M3*50mm socket screws.
 
-<img align="right" width="600" height="300" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Box.png">
+<img align="centre" width="600" height="300" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Box.png">
 
 ***
 
