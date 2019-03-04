@@ -26,7 +26,7 @@ The device consists of a custom-designed PCB, an [ESP32 development board](https
 
 ## Assembling the stimulator
 
-<img align="right" width="325" height="225" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Scematics.png">
+<img align="right" width="450" height="325" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Scematics.png">
 
 <p align="center"><h4 align="left">1 – Obtaining the custom-designed PCB</h4></p>
 
