@@ -68,7 +68,7 @@ Each potentiometer connects its ClockWise (pin 3) to the LED (+) stimulator JST 
 ***
 
 <p align="center"><h4 align="left">4 – Printing the Stimulator box</h4></p>
-<img align="left" width="450" height="225" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Box.png">
+<img align="left" width="300" height="225" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Box.png">
 
 [STL files](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/tree/master/3D%20Designs/Stimulator/STL%20Files) can be found on the GitHub repository and print directly if the user wishes to go for the default design (4 stimulation LEDs + 4 proxy LEDs) and [BoM](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Bills%20of%20Materials/BOM%20-%20Stimulator.ods).
 
