@@ -26,8 +26,8 @@ Smoothness = 360;   // Number of facets
 tol = 0.1;          // Printing tolerance
 TOL = 0.4;          // Component tolerance
 
-sep = 0;            // x & y separation values for display function
-zsep = 0;           // z separation values for display function
+sep = 5;            // x & y separation values for display function
+zsep = 5;           // z separation values for display function
 
 
 // // // // // // // // // // // // // // // // // // // // // // // // // // // //
@@ -39,10 +39,10 @@ Front = 1;
 Right = 1;
 Left = 1;
 Back = 1;
-Lid = 10;
+Lid = 1;
 
 LED_Option = 1;
-LED_Holder = 10;
+LED_Holder = 1;
 
 PCB = 0;
 Power_Switch = 0;
