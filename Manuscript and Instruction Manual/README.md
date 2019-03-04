@@ -98,8 +98,6 @@ Follow the installation instructions from the [Espressif repository](https://git
 ## Operating the Stimulator
 <p align="center"><h4 align="left">The code is organised in five distinct part:</h4></p>
 
-***
-
   Stimulus Parameters
 
 Here, the user determines the sequence of his looping stimulus.
