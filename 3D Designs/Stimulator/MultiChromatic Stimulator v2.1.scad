@@ -26,8 +26,8 @@ Smoothness = 360;   // Number of facets
 tol = 0.1;          // Printing tolerance
 TOL = 0.4;          // Component tolerance
 
-sep = 5;            // x & y separation values for display function
-zsep = 5;           // z separation values for display function
+sep = 7;            // x & y separation values for display function
+zsep = 7;           // z separation values for display function
 
 
 // // // // // // // // // // // // // // // // // // // // // // // // // // // //
@@ -44,8 +44,8 @@ Lid = 1;
 LED_Option = 1;
 LED_Holder = 1;
 
-PCB = 0;
-Power_Switch = 0;
+PCB = 10;
+Power_Switch = 10;
 
 // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 // // // // // // // // // // // // // // // // // // // // // // // // // // // //
@@ -64,12 +64,12 @@ Power_Switch = 0;
     n_LED = 4;          
 
 // Potentiometer Board
-    x_pot = 70.5;
-    y_pot = 50.5;
+    x_pot = 40;
+    y_pot = 30;
     z_pot = 6.86+z_PCB;
-    z_pot2 = 4.83+z_PCB;
+    z_pot2 = 4.9+z_PCB;
     d_pot = 10.26;
-    r_pot = 3/2;
+    r_pot = 3/2+tol;
     pot_pitch = 2.54*4;
     pos_z_pot = z_Box-20;
     x_Support = 2*Wall;
@@ -111,9 +111,9 @@ Power_Switch = 0;
     pos_y_Jack = 47.75;
     
 // USB
-    y_USB = 8.1;
-    z_USB = 2.25;
-    pos_z_USB = pos_z_PCB + z_PCB + 12.25;
+    y_USB = 10.8;
+    z_USB = 7.7;
+    pos_z_USB = pos_z_PCB + z_PCB + 12.25+1.25;
     
 // Box
     f1=15;
@@ -130,7 +130,7 @@ Power_Switch = 0;
     R_LED = 3/2;
     x_LED = 2*R_LED + 2.5*Wall;
     d_LED = 10;
-    pos_LED = [-x_Box/2+f1+2*Wall,-y_Box/2-Wall,z_Box/2+7.5];
+    pos_LED = [-x_Box/2+f1+2*Wall,-y_Box/2-Wall,z_Box/2+15.05];
     h_Sheet = 0.3;
     z_Sheet = Wall - h_Sheet;
     r_Cable = 15/2;
@@ -472,7 +472,7 @@ module Left(){
             translate([-x_Box/2,-y_Box/2++l1+l2,z_Box*2/3-Wall])cube([4*Wall,y_Box+4*Wall-l1-l2,z_Box*1/3]);
         }
         translate([-x_Box/2,-y_Box/2,z_Box*2/3-Wall])cube([Wall,l1,Wall]);// Left Back
-        translate([-x_Box/2+Wall-tol,-y_Box/2+l1,3*Wall])cube([Wall,l2,Wall]); // Left Middle
+        translate([-x_Box/2+Wall-tol,-y_Box/2+l1,3*Wall])cube([2*Wall,l2,Wall]); // Left Middle
         translate([-x_Box/2,-y_Box/2+l1+l2,z_Box*2/3-Wall])cube([Wall,y_Box+4*Wall-l1-l2,Wall]);// Left Front
     }
 }
@@ -490,7 +490,7 @@ module Left_neg(){
 }
 
 module Top_neg(){
-    translate([-x_Box/2-1.5*Wall-tol+2*Wall,-y_Box/2-1.5*Wall-tol+2*Wall,0])cube([x_Box+3*Wall+2*tol,y_Box+3*Wall+2*tol,z_Box-Wall]);  
+    translate([-x_Box/2-2*Wall-tol+2*Wall,-y_Box/2-2*Wall-tol+2*Wall,0])cube([x_Box+4*Wall+2*tol,y_Box+4*Wall+2*tol,z_Box-Wall]);  
 }
 
 module Power_Switch(){
@@ -510,8 +510,8 @@ module Labels(){
     translate([-x_Box/2+Wall,32+Wall,z_Box/2+7])rotate([90,0,0])rotate([0,-90,0])linear_extrude(h=Wall/2)text("Blanking",size=4.5);
     translate([-x_Box/2+Wall,29+Wall,z_Box/2])rotate([90,0,0])rotate([0,-90,0])linear_extrude(h=Wall/2)text("Signal",size=4.5);
     
-    translate([-x_Box/2+Wall,-13+Wall,z_Box/2+7])rotate([90,0,0])rotate([0,-90,0])linear_extrude(h=Wall/2)text("Trigger",size=4.5);
-    translate([-x_Box/2+Wall,-11+Wall,z_Box/2])rotate([90,0,0])rotate([0,-90,0])linear_extrude(h=Wall/2)text("Channel",size=4.5);
+    translate([-x_Box/2+Wall,-12+Wall,z_Box/2+7])rotate([90,0,0])rotate([0,-90,0])linear_extrude(h=Wall/2)text("Trigger",size=4.5);
+    translate([-x_Box/2+Wall,-10+Wall,z_Box/2])rotate([90,0,0])rotate([0,-90,0])linear_extrude(h=Wall/2)text("Channel",size=4.5);
     
     translate([x_Box/2+3*Wall,-12,z_Box/2+6])rotate([90,0,0])rotate([0,90,0])linear_extrude(h=Wall/2)text("Power in",size=5);
     translate([x_Box/2+3*Wall,-9,z_Box/2-2])rotate([90,0,0])rotate([0,90,0])linear_extrude(h=Wall/2)text("5 - 30V",size=5);
@@ -552,7 +552,7 @@ module LED_neg()translate(pos_LED){
     translate([Wall+2*x_LED+2*Wall,-Wall/2,-x_LED/2])cube([x_LED,2*Wall,x_LED]);
     translate([Wall+3*x_LED+3*Wall,-Wall/2,-x_LED/2])cube([x_LED,2*Wall,x_LED]);
     
-    translate([Wall/2,0,-x_LED/2-Wall/2])cube([n_LED*x_LED+n_LED*Wall,2*Wall,x_LED+Wall]);
+    translate([Wall/2,0,-x_LED/2-Wall/2])cube([n_LED*x_LED+n_LED*Wall,3*Wall,x_LED+Wall]);
 }
 H_LED = 1;
 R_LED = 3.9/2;
@@ -583,10 +583,10 @@ module Potentiometer()translate([0,y_Box/2-y_pot,pos_z_pot+Wall/2]){
     translate([-x_pot/2,0,0])cube([x_pot,y_pot,z_pot]);
     
     for (pp = [pot_pitch/2:pot_pitch:pot_pitch/2+((n_LED/2-1)*pot_pitch)]){
-        translate([pp,y_pot+2*Wall,z_pot2])rotate([-90,0,0])cylinder(r=r_pot,h=2*Wall,$fn=Smoothness);
+        translate([pp,y_pot+Wall,z_pot2])rotate([-90,0,0])cylinder(r=r_pot,h=4*Wall,$fn=Smoothness);
     }
     for (ppp = [-pot_pitch/2:-pot_pitch:-pot_pitch/2-((n_LED/2-1)*pot_pitch)]){
-        translate([ppp,y_pot+2*Wall,z_pot2])rotate([-90,0,0])cylinder(r=r_pot,h=2*Wall,$fn=Smoothness);
+        translate([ppp,y_pot+Wall,z_pot2])rotate([-90,0,0])cylinder(r=r_pot,h=4*Wall,$fn=Smoothness);
     }
 
     
@@ -594,7 +594,7 @@ module Potentiometer()translate([0,y_Box/2-y_pot,pos_z_pot+Wall/2]){
 
 module Potentiometer_Platform(){
 
-   translate([-x_pot/2-Wall,y_Box/2-y_pot-Wall,pos_z_pot])difference(){
+   translate([-x_pot/2-Wall,y_Box/2-y_pot+Wall,pos_z_pot])difference(){
         cube([x_pot+2*Wall,y_pot+Wall,1.5*Wall]);
         
        translate([Wall-tol,Wall-tol,Wall/2])cube([x_pot+2*tol,y_pot+tol,z_pot]);
@@ -603,12 +603,12 @@ module Potentiometer_Platform(){
 
     difference(){
         union(){
-            translate([-x_pot/2-Wall,y_Box/2,pos_z_pot-z_Support])rotate(rotate_Support)cube([x_Support,z_Support,y_Support]);
-            translate([x_pot/2-Wall,y_Box/2,pos_z_pot-z_Support])rotate(rotate_Support)cube([x_Support,z_Support,y_Support]);
+            translate([-x_pot/2-Wall,y_Box/2+2*Wall,pos_z_pot-z_Support])rotate(rotate_Support)cube([x_Support,z_Support,y_Support]);
+            translate([x_pot/2-Wall,y_Box/2+2*Wall,pos_z_pot-z_Support])rotate(rotate_Support)cube([x_Support,z_Support,y_Support]);
         }
-        translate([-x_pot/2-Wall,y_Box/2-y_pot-Wall,pos_z_pot+Wall/2])cube([x_pot+2*Wall,y_pot+Wall,z_Support]);
-        translate([-x_pot/2-Wall,y_Box/2,pos_z_pot+Wall/2-z_Support])cube([x_pot+2*Wall,y_pot+Wall,z_Support]);
-        translate([-x_pot/2-Wall,y_Box/2-y_pot-Wall,pos_z_pot+Wall/2])translate([Wall*3/2,Wall*3/2,-tol])cube([x_pot-Wall,y_pot-Wall,z_pot]);
+        translate([-x_pot/2-Wall,y_Box/2-y_pot+Wall,pos_z_pot+Wall/2])cube([x_pot+2*Wall,y_pot+Wall,z_Support]);
+        translate([-x_pot/2-Wall,y_Box/2+2*Wall,pos_z_pot+Wall/2-z_Support])cube([x_pot+2*Wall,y_pot+Wall,z_Support]);
+        translate([-x_pot/2-Wall,y_Box/2-y_pot+Wall,pos_z_pot+Wall/2])translate([Wall*3/2,Wall*3/2,-tol])cube([x_pot-Wall,y_pot-Wall,z_pot]);
     }
 }
 
