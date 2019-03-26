@@ -505,7 +505,7 @@ module Switch(){
 module Labels(){
     translate([-x_Box/2+2,y_Box/2-20,z_Box-Wall/2])linear_extrude(h=Wall/2)text("Multi-Chromatic Stimulator",size = 7.5);
     translate([x_Box/2-17,y_Box/2-27.5,z_Box-Wall/2])linear_extrude(h=Wall/2)text("v2.1",size=5);
-    translate([-x_Box/2+10,y_Box/2-45,z_Box-Wall/2])linear_extrude(h=Wall/2)text("An open hardware LED Stimulator",size=5.5);
+    translate([-x_Box/2+10,y_Box/2-45,z_Box-Wall/2])linear_extrude(h=Wall/2)text("An open-source LED Stimulator",size=5.5);
     
     translate([-x_Box/2+Wall,32+Wall,z_Box/2+7])rotate([90,0,0])rotate([0,-90,0])linear_extrude(h=Wall/2)text("Blanking",size=4.5);
     translate([-x_Box/2+Wall,29+Wall,z_Box/2])rotate([90,0,0])rotate([0,-90,0])linear_extrude(h=Wall/2)text("Signal",size=4.5);
