@@ -320,10 +320,10 @@ void loop(){
             iLoop = 0;                                  // Reset loop counter 
         
             for(i=0; i<nArrayEntries; i++){             // Fetch LED Values from the attached library
-              array1[i] = array_LED1[i] * max_LED1/100;
-              array2[i] = array_LED2[i] * max_LED2/100;
-              array3[i] = array_LED3[i] * max_LED3/100;
-              array4[i] = array_LED4[i] * max_LED4/100;
+              array1[i] = array_LED1[i] * max1_LED1/100;
+              array2[i] = array_LED2[i] * max1_LED2/100;
+              array3[i] = array_LED3[i] * max1_LED3/100;
+              array4[i] = array_LED4[i] * max1_LED4/100;
               Time[i]   = array_Time[i] / Scan_Logic;
             }        
           
@@ -381,10 +381,10 @@ void loop(){
             iLoop = 0;                                  // Reset loop counter 
         
             for(i=0; i<nArrayEntries; i++){             // Fetch LED Values from the attached library 
-                array1[i] = array_LED1[i] * min_LED1/100;
-                array2[i] = array_LED2[i] * min_LED2/100;
-                array3[i] = array_LED3[i] * min_LED3/100;
-                array4[i] = array_LED4[i] * min_LED4/100;
+                array1[i] = array_LED1[i] * max2_LED1/100;
+                array2[i] = array_LED2[i] * max2_LED2/100;
+                array3[i] = array_LED3[i] * max2_LED3/100;
+                array4[i] = array_LED4[i] * max2_LED4/100;
                 Time[i]   = array_Time[i] / Scan_Logic;
             }        
           
@@ -438,14 +438,14 @@ void loop(){
   
       case '+':
         // ALL LEDs at max value
-        tlc.setPWM(led1, max_LED1);
-        tlc.setPWM(led2, max_LED2);
-        tlc.setPWM(led3, max_LED3);
-        tlc.setPWM(led4, max_LED4);
-        tlc.setPWM(proxy_led1, max_LED1);
-        tlc.setPWM(proxy_led2, max_LED2);
-        tlc.setPWM(proxy_led3, max_LED3);
-        tlc.setPWM(proxy_led4, max_LED4);
+        tlc.setPWM(led1, max1_LED1);
+        tlc.setPWM(led2, max1_LED2);
+        tlc.setPWM(led3, max1_LED3);
+        tlc.setPWM(led4, max1_LED4);
+        tlc.setPWM(proxy_led1, max1_LED1);
+        tlc.setPWM(proxy_led2, max1_LED2);
+        tlc.setPWM(proxy_led3, max1_LED3);
+        tlc.setPWM(proxy_led4, max1_LED4);
         tlc.write();
         Serial.println("-> First LED to maximum power");                                        
         Serial.println("-> Second LED to maximum power");                                        
@@ -455,14 +455,14 @@ void loop(){
 
       case '-':
         // ALL LEDs at min value
-        tlc.setPWM(led1, min_LED1);
-        tlc.setPWM(led2, min_LED2);
-        tlc.setPWM(led3, min_LED3);
-        tlc.setPWM(led4, min_LED4);
-        tlc.setPWM(proxy_led1, min_LED1);
-        tlc.setPWM(proxy_led2, min_LED2);
-        tlc.setPWM(proxy_led3, min_LED3);
-        tlc.setPWM(proxy_led4, min_LED4);
+        tlc.setPWM(led1, max2_LED1);
+        tlc.setPWM(led2, max2_LED2);
+        tlc.setPWM(led3, max2_LED3);
+        tlc.setPWM(led4, max2_LED4);
+        tlc.setPWM(proxy_led1, max2_LED1);
+        tlc.setPWM(proxy_led2, max2_LED2);
+        tlc.setPWM(proxy_led3, max2_LED3);
+        tlc.setPWM(proxy_led4, max2_LED4);
         tlc.write();
         Serial.println("-> First LED to minimum power");                                        
         Serial.println("-> Second LED to minimum power");                                        
@@ -472,64 +472,64 @@ void loop(){
 
       case '1':
         // First LEDs at max value
-        tlc.setPWM(led1, max_LED1);
-        tlc.setPWM(proxy_led1, max_LED1);
+        tlc.setPWM(led1, max1_LED1);
+        tlc.setPWM(proxy_led1, max1_LED1);
         tlc.write();
         Serial.println("-> First LED to full power");                                                                                                              
       break; 
 
       case '2':
         // First LEDs at minimum value
-        tlc.setPWM(led1, min_LED1);
-        tlc.setPWM(proxy_led1, min_LED1);
+        tlc.setPWM(led1, max2_LED1);
+        tlc.setPWM(proxy_led1, max2_LED1);
         tlc.write();
         Serial.println("-> First LED to minimum power");                                                                                                              
       break; 
 
       case '3':
         // Second LEDs at max value
-        tlc.setPWM(led2, max_LED2);
-        tlc.setPWM(proxy_led2, max_LED2);
+        tlc.setPWM(led2, max1_LED2);
+        tlc.setPWM(proxy_led2, max1_LED2);
         tlc.write();
         Serial.println("-> Second LED to full power");                                                                                                              
       break; 
 
       case '4':
         // Second LEDs at minimum value
-        tlc.setPWM(led2, min_LED2);
-        tlc.setPWM(proxy_led2, min_LED2);
+        tlc.setPWM(led2, max2_LED2);
+        tlc.setPWM(proxy_led2, max2_LED2);
         tlc.write();
         Serial.println("-> Second LED to minimum power");                                                                                                              
       break; 
 
       case '5':
         // Third LEDs at max value
-        tlc.setPWM(led3, max_LED3);
-        tlc.setPWM(proxy_led3, max_LED3);
+        tlc.setPWM(led3, max1_LED3);
+        tlc.setPWM(proxy_led3, max1_LED3);
         tlc.write();
         Serial.println("-> Third LED to full power");                                                                                                              
       break; 
 
       case '6':
         // Third LEDs at minimum value
-        tlc.setPWM(led3, min_LED3);
-        tlc.setPWM(proxy_led3, min_LED3);
+        tlc.setPWM(led3, max2_LED3);
+        tlc.setPWM(proxy_led3, max2_LED3);
         tlc.write();
         Serial.println("-> Third LED to minimum power");                                                                                                              
       break; 
 
       case '7':
         // Fourth LEDs at max value
-        tlc.setPWM(led4, max_LED4);
-        tlc.setPWM(proxy_led4, max_LED4);
+        tlc.setPWM(led4, max1_LED4);
+        tlc.setPWM(proxy_led4, max1_LED4);
         tlc.write();
         Serial.println("-> Fourth LED to full power");                                                                                                              
       break; 
 
       case '8':
         // Fourth LEDs at minimum value
-        tlc.setPWM(led4, min_LED4);
-        tlc.setPWM(proxy_led4, min_LED4);
+        tlc.setPWM(led4, max2_LED4);
+        tlc.setPWM(proxy_led4, max2_LED4);
         tlc.write();
         Serial.println("-> UV LED to minimum power");                                                                                                              
       break;

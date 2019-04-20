@@ -176,31 +176,31 @@ This is where the stimuli controls are defined. By default, when compile window 
 
 By default:
 
--	'a' –> Play stimulus at max power
+-	'a' –> Play stimulus at max power 1
 
--	'b' –> Play stimulus at min power
+-	'b' –> Play stimulus at max power 2
 
 -	'0' –> Turn off all LEDs stop any stimulus being played and reset the loop
 
--	'+' –> Turn on all LED to max power
+-	'+' –> Turn on all LED to max power 1
 
--	'-' –> Turn on all LED to min power
+-	'-' –> Turn on all LED to max power 2
 
--	'1' –> Turn First LED to max power
+-	'1' –> Turn First LED to max power 1
 
--	'2' –> Turn First LED to min power
+-	'2' –> Turn First LED to max power 2
 
--	'3' –> Turn Second LED to min power
+-	'3' –> Turn Second LED to max power 1
 
--	'4' –> Turn Second LED to min power
+-	'4' –> Turn Second LED to max power 2
 
--	'5' –> Turn Third LED to min power
+-	'5' –> Turn Third LED to max power 1
 
--	'6' –> Turn Third LED to min power
+-	'6' –> Turn Third LED to max power 2
 
--	'7' –> Turn Fourth LED to min power
+-	'7' –> Turn Fourth LED to max power 1
 
--	'8' –> Turn Fourth LED to min power
+-	'8' –> Turn Fourth LED to max power 2
 
 Important to note, obviously the stimulation will only be played if a blanking signal is sent to the board.
 

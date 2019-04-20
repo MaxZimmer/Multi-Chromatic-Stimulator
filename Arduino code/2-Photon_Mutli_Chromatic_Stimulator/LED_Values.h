@@ -7,14 +7,14 @@
 
 
 
-const  int  max_LED1            = 4095;  // First LED maximum intensity
-const  int  min_LED1            = 2000;  // First LED minimum intensity
+const  int  max1_LED1            = 4095;  // First LED maximum intensity
+const  int  max2_LED1            = 2000;  // First LED minimum intensity
 
-const  int  max_LED2            = 4095;  // Second LED maximum intensity
-const  int  min_LED2            = 2000;  // Second LED minimum intensity
+const  int  max1_LED2            = 4095;  // Second LED maximum intensity
+const  int  max2_LED2            = 2000;  // Second LED minimum intensity
 
-const  int  max_LED3            = 4095;  // Third LED maximum intensity
-const  int  min_LED3            = 2000;  // Third LED minimum intensity
+const  int  max1_LED3            = 4095;  // Third LED maximum intensity
+const  int  max2_LED3            = 2000;  // Third LED minimum intensity
 
-const  int  max_LED4            = 4095;  // Fourth LED maximum intensity
-const  int  min_LED4            = 2000;  // Fourth LED minimum intensity
+const  int  max1_LED4            = 4095;  // Fourth LED maximum intensity
+const  int  max2_LED4            = 2000;  // Fourth LED minimum intensity
