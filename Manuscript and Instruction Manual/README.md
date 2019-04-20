@@ -158,9 +158,9 @@ This is the main definition part of the code which can be modified to:
 
 -	Add more LEDs than the 4 main and 4 proxy defined by default. (Global variables, the LED pins correspond to the pin number on the TLC5947).
 
--	Adjust the trigger duration (25ms by default).
+-	Adjust the Trigger duration (25ms by default). This value corresponds to the amount of time the trigger marker will remain on in order to be detected by i.e. a DAQ.
 
--	Adjust the Trigger interval (1000 ms by default)
+-	Adjust the Trigger interval (1000 ms by default). Value between two successive triggers.
 
 ***
 
