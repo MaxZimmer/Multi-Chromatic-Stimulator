@@ -17,7 +17,7 @@ The stimulator synchronises the light stimulation with the sample scanning in or
 
 ***
 
-<img align="center" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Spectrum%20Calibration/Opsin-LED%20Spectra.png" width="1000"/>
+<img align="center" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Spectrum%20Calibration/Spectrometer%20Recording/Opsin-LED%20Spectra.png" width="1000"/>
 
 ***
 
