@@ -246,11 +246,9 @@ Depending on the LEDs used or on the extra resistors that a user might want to c
 At this stage, one might retake measurements with the spectrometer with this new power (in our case equalised amongst LEDs), and rerun the first part of this script to obtain more precise curves.
 
 To establish the LEDs performance we then plotted their normalised intensities (LED relative brightness) against the PWM (*array_LED#*) used in the Arduino code to drive them. A Linear fit along with the Sum of Square Error (SSE), demonstrates that the TLC5947 LED driver controls the LED in an optimal linear manner.
+
 <img align="center" width="800" height="200" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide4.png">
 
-
-
-To adjust the LED brightness, the user should first use the trimmer potentiometer at the back of the stimulator then finely tune the desired max power in the code. When the LED value (0-100) will be entered in the stimulus sequence, it will automatically be mapped to 0-max_LED#
 
 ***
 
