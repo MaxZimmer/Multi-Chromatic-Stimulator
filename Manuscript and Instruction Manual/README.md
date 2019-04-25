@@ -251,9 +251,9 @@ To establish the LEDs performance we then plotted their normalised intensities (
 
 ***
 
-We then used the absorbance spectrum fitting template for visual pigment defined by [Govardoskii et al,2000 - In Search of Visual Pigment Template](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/References/Govardovskii%202000%20-%20In%20search%20of%20the%20visual%20pigment%20template.pdf). Using the Opsin maximal absorbance defined earlier, this nomogram template describes the predicted shape of the absorbance spectra of all visual pigment. Here we obtained the following specra for the zebrafish cone photoreceptors that we plotted along the human visible spectrum as comparison.
+We then used the absorbance spectrum fitting template for visual pigment defined by [Govardoskii et al, 2000 - In Search of Visual Pigment Template](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/References/Govardovskii%202000%20-%20In%20search%20of%20the%20visual%20pigment%20template.pdf). Using the Opsin maximal absorbance defined earlier, this nomogram template describes the predicted shape of the absorbance spectra of all visual pigment. Here we obtained the following specra for the zebrafish cone photoreceptors that we plotted along the human visible spectrum as comparison.
 
-<img align="center" width="800" height="450" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide5.png">
+<img align="center" width="900" height="550" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide5.png">
 
 ***
 
