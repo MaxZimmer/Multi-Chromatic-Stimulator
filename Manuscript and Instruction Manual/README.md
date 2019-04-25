@@ -232,7 +232,7 @@ In this script, one has to first modify the global parameters:
   - Recording parameters: Number of loops, number of recording per loop, etc.
   - Figure parameters: Figure sizes, spectra range to considered, etc.
 
-<img align="left" width="600" height="400" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide3.png">
+<img align="left" width="700" height="466" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide3.png">
 
 .
 
