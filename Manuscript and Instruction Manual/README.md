@@ -255,7 +255,17 @@ We then used the absorbance spectrum fitting template for visual pigment defined
 
 <img align="center" width="900" height="550" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide5.png">
 
-***
+
+Using the same display we plotted the LEDs spectra that we obtained from the spectrometer recordings.
+
+<img align="center" width="900" height="550" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide6.png">
+
+
+Finally we plotted the LED spectra along the cone opsin absorbance, and each LED’s spectral cross-section with respective target conein solid colours. Grey boxes indicate the positions of the two PMT detector bands. The Red-LED’s long-wavelength emission spectrum was chosen to limit spectral overlap with the red-fluorescence detection channel. Any loss in excitation efficiency of the red opsin was compensated for by increasing this LED’s power accordingly.
+
+<img align="center" width="900" height="550" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide7.png">
+
+And
 
 This project is licensed under the [GNU General Public License v3.0](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/LICENSE)
 
