@@ -234,7 +234,8 @@ In this script, one has to first modify the global parameters:
 
 <img align="right" width="500" height="300" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide3.png">
 
-Then run a couple of slides to extract and smooth (Savitzky–Golay filter) the recording data. From this recording, we extracted the peak wavelength of each LED: *Peaks[]*.
+Then run a couple of slides to extract and smooth (Savitzky–Golay filter) the recording data. From this recording, we extracted the peak wavelength of each LED: *Peaks[ ]*.
+
 | LED                  |    Red   |   Green  |   Blue   |    UV    |
 | ---------------------|:--------:|:--------:|:--------:|:--------:|
 | Peak wavelength (nm) |   586.9  |   487.5  |   427.9  |   372.8  |
