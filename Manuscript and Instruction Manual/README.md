@@ -224,7 +224,7 @@ Recordings were made using the inbuilt trigger mode of the spectrometer (connect
 
 
 <img align="left" width="500" height="300" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide2.png">
-<img align="left" width="300" height="250" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Box.png">
+
 For analysis purposes, we designed an [iPython notebook](https://jupyter.readthedocs.io/en/latest/install.html).
 In this script, one has to first modify the global parameters:
   - Directory location: *os.chdir*
