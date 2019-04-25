@@ -235,10 +235,9 @@ In this script, one has to first modify the global parameters:
 <img align="right" width="500" height="300" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide3.png">
 
 Then run a couple of slides to extract and smooth (Savitzky–Golay filter) the recording data. From this recording, we extracted the peak wavelength of each LED: *Peaks[ ]*.
-
-| LED                  |    Red   |   Green  |   Blue   |    UV    |
-| ---------------------|:--------:|:--------:|:--------:|:--------:|
-| Peak wavelength (nm) |   586.9  |   487.5  |   427.9  |   372.8  |
+| LED                 |   Red  |  Green |  Blue  |   UV   |
+| --------------------|:------:|:------:|:------:|:------:|
+| Peak wavelength (nm)|  586.9 |  487.5 |  427.9 |  372.8 |
 
 Depending on the LEDs used or on the extra resistors that a user might want to connect in series to substantially tune down the LEDs, a powermeter shall be used to bring the LEDs to their desired max values. Here we suggest to set the potentiometers at mid-range and replace the spectrometer sensor by the powermeter's. In our case, we are using a [ThorLabs Digital Handheld Optical Power](https://www.thorlabs.de/newgrouppage9.cfm?objectgroup_id=3341) coupled with a [ThorLabs Photodiode Power Sensor S130VC](https://www.thorlabs.de/thorproduct.cfm?partnumber=S130VC),200 - 1100 nm, 50 mW. Each LED is then successively brought to their desired maximum power (here 40nm) and the powermeter parametered to its peak wavelength (λmax). Once this value has been reached, the *max_LED* value in the LED Values part of the Arduino code has to be decreased until a change is oberved. The max_LED value is then hard-coded and fine power tuning can be achieved with the potentiometers.
 At this stage, one might retake measurements with the spectrometer with this new power (in our case equalised amongst LEDs), and rerun the first part of this script to obtain more precise curves.
