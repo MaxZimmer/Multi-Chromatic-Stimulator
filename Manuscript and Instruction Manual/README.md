@@ -136,11 +136,11 @@ Follow the installation instructions from the [Espressif repository](https://git
 
 Here, users determine the sequence of their looping stimulus.
 
-–	The array_LED# corresponds to the sequence of each LED#. The value corresponds to the LED power and CAN ONLY TAKE A VALUE FROM 0 TO 100, where 0 corresponds to no light and 100 to max light intensity
+–	The *array_LED#* corresponds to the sequence of each LED#. The value corresponds to the LED power and CAN ONLY TAKE A VALUE FROM 0 TO 100, where 0 corresponds to no light and 100 to max light intensity
 
-–	The array_Time corresponds to the duration of each entry in ms; the first entry being the pre-adaptation that will only be played at the start of the stimulus, the sequence will then loop starting at the second position.
+–	The *array_Time* corresponds to the duration of each entry in ms; the first entry being the pre-adaptation that will only be played at the start of the stimulus, the sequence will then loop starting at the second position.
 
-–	The number of Loops is determined by nLoops. The stimulus will stop after finishing the n Loop.
+–	The number of Loops is determined by *nLoops*. The stimulus will stop after finishing the n Loop.
 
 –	IMPORTANT, for the code to work flawlessly, the number of entries within the arrays has to be the same and manually entered in nArrayEntries (including the pre-adaptation at position 1).
 
@@ -176,31 +176,31 @@ This is where the stimuli controls are defined. By default, when compile window 
 
 By default:
 
--	'a' –> Play stimulus at max power 1
+-	*a* –> Play stimulus at max power 1
 
--	'b' –> Play stimulus at max power 2
+-	*b* –> Play stimulus at max power 2
 
--	'0' –> Turn off all LEDs stop any stimulus being played and reset the loop
+-	*0* –> Turn off all LEDs stop any stimulus being played and reset the loop
 
--	'+' –> Turn on all LED to max power 1
+-	*+* –> Turn on all LED to max power 1
 
--	'-' –> Turn on all LED to max power 2
+-	*-* –> Turn on all LED to max power 2
 
--	'1' –> Turn First LED to max power 1
+-	*1* –> Turn First LED to max power 1
 
--	'2' –> Turn First LED to max power 2
+-	*2* –> Turn First LED to max power 2
 
--	'3' –> Turn Second LED to max power 1
+-	*3* –> Turn Second LED to max power 1
 
--	'4' –> Turn Second LED to max power 2
+-	*4* –> Turn Second LED to max power 2
 
--	'5' –> Turn Third LED to max power 1
+-	*5* –> Turn Third LED to max power 1
 
--	'6' –> Turn Third LED to max power 2
+-	*6* –> Turn Third LED to max power 2
 
--	'7' –> Turn Fourth LED to max power 1
+-	*7* –> Turn Fourth LED to max power 1
 
--	'8' –> Turn Fourth LED to max power 2
+-	*8* –> Turn Fourth LED to max power 2
 
 Important to note, obviously the stimulation will only be played if a blanking signal is sent to the board.
 
@@ -216,7 +216,7 @@ On the default script we proposed 2 distinct max values (named here max1 and max
 For the calibration, we suggest setting the max_LED# value at 4095 (Full power), play the stimulus (while the board receives a blanking signal it sees its LED average light intensity decrease (LED off while blanking)) and jointly use a spectrometer and a powermeter.
 
 
-Visual Stimulator Calibration
+### Visual Stimulator Calibration
 
 For the visual stimulator, we use the [ThorLabs Compact CCD Spectrometer](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_ID=3482) CCS200/M in combination with the [ThorLabs OSA software](https://www.thorlabs.com/software_pages/ViewSoftwarePage.cfm?Code=OSA).
 We placed the spectrometer fiber patch cable at the sample position and played the calibration code on the stimulator. This calibration sequence plays each LED individually from 0 to 100% for 1 second and loops 5 times. This stimulus sequence is quite tedious so we encourage users to adapt it to their needs.
