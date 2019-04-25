@@ -232,7 +232,8 @@ In this script, one has to first modify the global parameters:
   - Recording parameters: Number of loops, number of recording per loop, etc.
   - Figure parameters: Figure sizes, spectra range to considered, etc.
 
-<img align="right" width="300" height="250" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide2.png">
+<img align="right" width="500" height="300" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide3.png">
+
 Then run a couple of slides to extract and smooth (Savitzky–Golay filter) the recording data. From this recording, we extracted the peak wavelength of each LED: *Peaks[]*.
 | LED                  |    Red   |   Green  |   Blue   |    UV    |
 | ---------------------|:--------:|:--------:|:--------:|:--------:|
