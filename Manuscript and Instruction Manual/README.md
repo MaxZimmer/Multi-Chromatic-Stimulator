@@ -211,9 +211,38 @@ Important to note, obviously the stimulation will only be played if a blanking s
 The TLC5947 is a 12 bits PWM grayscale driver, meaning that it offers a 4096 degree of freedom to adjust each LED power.
 On the arduino code there is a second tab called “LED_values” which hard-codes the maximum power a LED can get. Those values range from 0 (no current) to 4095 (max current, 15mA by default).
 
-On the default script we proposed 2 distinct max values (oddly named here max1 and max2 power) that can be called individually. The purpose here is to have the opportunity to use the same stimulus sequence at two different light intensities. Off course more can be added manually by the user.
+On the default script we proposed 2 distinct max values (named here max1 and max2 power) that can be called individually. The purpose here is to have the opportunity to use the same stimulus sequence at two different light intensities. Off course more can be added manually by the user.
 
-For the calibration, we suggest setting the max_LED# value at 4095 (Full power), play the stimulus (while teh board receives a blanking signal and then sees its LED vaerage light intensity decrease (LED off while blanking)) and use successively a spectrometer and a powermeter. To adjust the LED brightness, the user should first use the trimmer potentiometer at the back of the stimulator then finely tune the desired max power in the code. When the LED value (0-100) will be entered in the stimulus sequence, it will automatically be mapped to 0-max_LED#
+For the calibration, we suggest setting the max_LED# value at 4095 (Full power), play the stimulus (while the board receives a blanking signal it sees its LED average light intensity decrease (LED off while blanking)) and jointly use a spectrometer and a powermeter.
+
+  Spectrometer Calibration
+
+For the visual stimulator, we use the [ThorLabs Compact CCD Spectrometer](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_ID=3482) CCS200/M in combination with the [ThorLabs OSA software](https://www.thorlabs.com/software_pages/ViewSoftwarePage.cfm?Code=OSA).
+We placed the spectrometer fiber patch cable at the sample position and played the calibration code on the stimulator. This calibration sequence plays each LED individually from 0 to 100% for 1 second and loops 5 times. This stimulus sequence is quite tedious so we encourage users to adapt it to their needs.
+Recordings were made using the inbuilt trigger mode of the spectrometer (connected to the stimulator trigger output). We used an integration time of 1 second and applied the inbuilt spectrum correction in the OSA software. Data was extracted as .csv files and analysed it using our [iPython analysis script](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Spectrum%20Calibration/Measurement%20Analysis.ipynb).
+
+<img align="left" width="300" height="250" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide2.png">
+For analysis purposes, we designed an [iPython notebook](https://jupyter.readthedocs.io/en/latest/install.html).
+In this script, one has to first modify the global parameters:
+  - Directory location: *os.chdir*
+  - Opsin maximum absorbance: *PeakWavelength* This array contains the peak asorbance for each opsin considered. For the zebrafish, we use the value defined by [Allison et al, 2004 - Visual pigment composition in Zebrafish](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/References/Allison%202004%20-%20Visual%20pigment%20composition%20in%20zebrafish.pdf)
+  - Recording parameters: Number of loops, number of recording per loop, etc.
+  - Figure parameters: Figure sizes, spectra range to considered, etc.
+
+<img align="right" width="300" height="250" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide2.png">
+Then run a couple of slides to extract and smooth (Savitzky–Golay filter) the recording data. From this recording, we extracted the peak wavelength of each LED: *Peaks[]*.
+| LED                  |    Red   |   Green  |   Blue   |    UV    |
+| ---------------------|:--------:|:--------:|:--------:|:--------:|
+| Peak wavelength (nm) |   586.9  |   487.5  |   427.9  |   372.8  |
+Depending on the LEDs used or on the extra resistors that a user might want to connect in series to substantially tune down the LEDs, a powermeter shall be used to bring the LEDs to their desired max values. Here we suggest to set the potentiometers at mid-range and replace the spectrometer sensor by the powermeter's. In our case, we are using a [ThorLabs Digital Handheld Optical Power](https://www.thorlabs.de/newgrouppage9.cfm?objectgroup_id=3341) coupled with a [ThorLabs Photodiode Power Sensor S130VC](https://www.thorlabs.de/thorproduct.cfm?partnumber=S130VC),200 - 1100 nm, 50 mW. Each LED is then successively brought to their desired maximum power (here 40nm) and the powermeter parametered to its peak wavelength (λmax). Once this value has been reached, the *max_LED* value in the LED Values part of the Arduino code has to be decreased until a change is oberved. The max_LED value is then hard-coded and fine power tuning can be achieved with the potentiometers.
+At this stage, one might retake measurements with the spectrometer with this new power (in our case equalised amongst LEDs), and rerun the first part of this script to obtain more precise curves.
+
+To establish the LEDs performance we then plotted their normalised intensities (LED relative brightness) against the PWM (*array_LED#*) used in the Arduino code to drive them. A Linear fit along with the Sum of Square Error (SSE), demonstrates that the TLC5947 LED driver controls the LED in an optimal linear manner.
+<img align="right" width="300" height="250" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide3.png">
+
+
+
+To adjust the LED brightness, the user should first use the trimmer potentiometer at the back of the stimulator then finely tune the desired max power in the code. When the LED value (0-100) will be entered in the stimulus sequence, it will automatically be mapped to 0-max_LED#
 
 ***
 
