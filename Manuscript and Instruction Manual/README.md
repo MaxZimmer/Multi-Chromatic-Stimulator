@@ -223,7 +223,7 @@ We placed the spectrometer fiber patch cable at the sample position and played t
 Recordings were made using the inbuilt trigger mode of the spectrometer (connected to the stimulator trigger output). We used an integration time of 1 second and applied the inbuilt spectrum correction in the OSA software. Data was extracted as .csv files and analysed it using our [iPython analysis script](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Spectrum%20Calibration/Measurement%20Analysis.ipynb).
 
 
-<img align="left" width="500" height="325" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide2.png">
+<img align="left" width="500" height="350" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide2.png">
 
 For analysis purposes, we designed an [iPython notebook](https://jupyter.readthedocs.io/en/latest/install.html).
 In this script, one has to first modify the global parameters:
