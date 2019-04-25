@@ -218,9 +218,9 @@ For the calibration, we suggest setting the max_LED# value at 4095 (Full power),
 
 ### Visual Stimulator Calibration
 
-For the visual stimulator, we use the [ThorLabs Compact CCD Spectrometer](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_ID=3482) CCS200/M in combination with the [ThorLabs OSA software](https://www.thorlabs.com/software_pages/ViewSoftwarePage.cfm?Code=OSA).
+For the visual stimulator, we used the [ThorLabs Compact CCD Spectrometer](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_ID=3482) CCS200/M in combination with the [ThorLabs OSA software](https://www.thorlabs.com/software_pages/ViewSoftwarePage.cfm?Code=OSA).
 We placed the spectrometer fiber patch cable at the sample position and played the calibration code on the stimulator. This calibration sequence plays each LED individually from 0 to 100% for 1 second and loops 5 times. This stimulus sequence is quite tedious so we encourage users to adapt it to their needs.
-Recordings were made using the inbuilt trigger mode of the spectrometer (connected to the stimulator trigger output). We used an integration time of 1 second and applied the inbuilt spectrum correction in the OSA software. Data was extracted as .csv files and analysed it using our [iPython analysis script](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Spectrum%20Calibration/Measurement%20Analysis.ipynb).
+Recordings were made using the inbuilt trigger mode of the spectrometer (connected to the stimulator trigger output). We used an integration time of 1 second and applied the inbuilt spectrum correction in the OSA software. Data was extracted as .csv files and analysed using our [iPython analysis script](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Spectrum%20Calibration/Measurement%20Analysis.ipynb).
 
 
 <img align="right" width="500" height="350" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide2.png">
@@ -236,7 +236,9 @@ In this script, one has to first modify the global parameters:
 
 .
 
-The script then run a couple of slides to extract and smooth (Savitzky–Golay filter) the recording data. From this recording, the peak wavelength of each LED is extracted and assigned to the *Peaks[ ]* array.
+The script then run a couple of slides to extract and smooth (Savitzky–Golay filter) the recording data.
+
+From this recording, the peak wavelength of each LED is extracted and assigned to the *Peaks[ ]* array.
 
 |                     |   Red LED  |  Green LED |  Blue LED  |   UV LED   |
 | --------------------|:----------:|:----------:|:----------:|:----------:|
