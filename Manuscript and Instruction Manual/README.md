@@ -267,7 +267,8 @@ Finally we plotted the LED spectra along the cone opsin absorbance, and each LED
 
 <img align="center" width="900" height="600" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide7.png">
 
-And
+
+***
 
 This project is licensed under the [GNU General Public License v3.0](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/LICENSE)
 
