@@ -253,17 +253,19 @@ To establish the LEDs performance we then plotted their normalised intensities (
 
 We then used the absorbance spectrum fitting template for visual pigment defined by [Govardoskii et al, 2000 - In Search of Visual Pigment Template](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/References/Govardovskii%202000%20-%20In%20search%20of%20the%20visual%20pigment%20template.pdf). Using the Opsin maximal absorbance defined earlier, this nomogram template describes the predicted shape of the absorbance spectra of all visual pigment. Here we obtained the following specra for the zebrafish cone photoreceptors that we plotted along the human visible spectrum as comparison.
 
-<img align="center" width="900" height="550" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide5.png">
+<img align="center" width="900" height="600" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide5.png">
 
+***
 
 Using the same display we plotted the LEDs spectra that we obtained from the spectrometer recordings.
 
-<img align="center" width="900" height="550" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide6.png">
+<img align="center" width="900" height="600" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide6.png">
 
+***
 
 Finally we plotted the LED spectra along the cone opsin absorbance, and each LED’s spectral cross-section with respective target conein solid colours. Grey boxes indicate the positions of the two PMT detector bands. The Red-LED’s long-wavelength emission spectrum was chosen to limit spectral overlap with the red-fluorescence detection channel. Any loss in excitation efficiency of the red opsin was compensated for by increasing this LED’s power accordingly.
 
-<img align="center" width="900" height="550" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide7.png">
+<img align="center" width="900" height="600" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/iPython%20Notebook/Slide7.png">
 
 And
 
