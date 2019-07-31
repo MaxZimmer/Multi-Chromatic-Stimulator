@@ -28,9 +28,9 @@ Baden Lab, CRPC, School of Life Sciences, University of Sussex, United Kingdom
                            Stimulus parameters
 -------------------------------------------------------------------------------------*/                                                                                             
 
-int           nLoops           = 50;     //  Number of repeats of the arrays (i.e. Loops)
-const int     nArrayEntries    = 9;      //  Number of entries in the arrays, including preadaption at position 0
-const int     Scan_Logic      =  1;      //  Scanning logic (1 for 1ms scans, 2 for 2ms scans, etc.)
+int           nLoops           = 500;     //  Number of repeats of the arrays (i.e. Loops)
+const int     nArrayEntries    = 3;      //  Number of entries in the arrays, including preadaption at position 0
+const int     Scan_Logic      =  2;      //  Scanning logic (1 for 1ms scans, 2 for 2ms scans, etc.)
 
 
 
@@ -40,21 +40,21 @@ const int     Scan_Logic      =  1;      //  Scanning logic (1 for 1ms scans, 2 
 
 // The array_LED# values are expressed in percentage and should only be expressed from 0-100
 const int8_t array_LED1[] PROGMEM = {
-0,100,100,100,100,100,100,100,0
+0,100,0
 };
 const int8_t array_LED2[] PROGMEM = {    
-0,0,100,100,100,100,100,0,0
+0,100,0
 };
 const int8_t array_LED3[] PROGMEM = {    
-0,0,0,100,100,100,0,0,0
+0,100,0
 };
 const int8_t array_LED4[] PROGMEM = {
-0,0,0,0,100,0,0,0,0
+0,100,0
 };
 
 // The array_Time values are expressed in milliseconds
 const int16_t array_Time[] PROGMEM = {      
-2000,500,500,500,500,500,500,500,500
+100,100,100
 };
 
 // // // // // // // // // // // // // // // // // // // // // // // // // // //
