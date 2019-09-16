@@ -57,7 +57,7 @@ The Adafruit TLC5947 LED driver is a constant current driver configured by defau
 ****
 
 <p align="center"><h4 align="left">3 – Mounting the potentiometer</h4></p>
-<img align="right" width="250" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Potentiometer%20PCB.png">
+<img align="right" width="200" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Potentiometer%20PCB.png">
 
 In order to finely adjust each LED power, we added multiple-turn trimmer potentiometers to our design. A simple solution is to manufacture the appropriate PCB board (We provide multiple options on the [GitHub repository](https://github.com/BadenLab/Tetra-Chromatic-Stimulator/tree/master/PCB/Potentiometer%20Mounts)).
 
