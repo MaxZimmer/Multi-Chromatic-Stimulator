@@ -6,7 +6,7 @@
 
 ## Overview
 
-<img align="right" width="600" height="475" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Stimulator.png">
+<img align="right" width="600" height="300" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Stimulator.png">
 
 This document contains detailed assembly instructions, a software guideline to customize stimuli, and includes a parts list.
 
