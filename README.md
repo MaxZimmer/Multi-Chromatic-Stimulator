@@ -15,6 +15,47 @@ Here we describe an effective, low-cost, opensource LED stimulator, designed to 
 
 ***
 
+## Repository structure
+
+```
+├───3D Designs                                Contains printed parts for the stimulator and optical components
+│   ├───Optical Components
+|   |   ├───STL renderings                    - Printing files
+|   |   └───SCAD files                        - SCAD files to be modified if need be
+│   └───Stimulator
+|      ├───STL renderings                    - Printing files
+|      └───SCAD files                        - SCAD files to be modified if need be
+|
+├───Arduino Code                              Stimulator Code
+|   ├───Stimulator Code                       - Adaptable C+ code for running the stimulator
+|   └───LED drive library                     - Library to run the TLC 5947
+|
+├───Bill of Materials                         List of necessary components and retailer suggestions
+|
+├───Datasheets                                - Contains all technical sheet for:
+|   ├───Optical Components                    - ...LEDs, Filters, Dichroic Mirrors used in the presented example
+|   ├───Stimulator                            - ...micro-controller and LED driver
+|   └───Spectrometer                          - ...device used for calibration
+|
+├───Images                                    Image repository
+|
+├───Instruction Manual                        Detailed manual to assemble and calibrate the stimulator
+|   └───Stimulator Calibration                - Contains calibration recordings and the adaptable jupyter notebook script to calibrate the stimulator
+|       ├───Arduino Calibration Code          - Sequence used for the calibration
+|       ├───Filters                           - Filters and dicroic mirrors spectra
+|       ├───Powermeter Recording              - Recording of the calibration sequence
+|       └───Spectrometer Recording            - Recording of the calibration sequence
+|
+├───PCB                                       KiCad and Gerber files to modified and generate PCB for:
+│   ├───Potentiometer mounts                  - ...trimmer potentiometers that set the LED maximum brightness
+│   └───Stimulator                            - ...the stimulator itself
+|
+└───References                                Publication used to design and conceive this model
+
+```
+
+***
+
 The following design can control up to 24 spectral channels with 12 bits linear resolution and 25 μs temporal precision. Our system only requires simple electronics components to be assemble and can be combined.
 Built around an ESP32 micro-controller an LED driver (Adafruit model) and off-the-shelf components for a total cost of ~$50
 
@@ -41,42 +82,3 @@ In this example, light sources are combined and directed through the onjective.
 <img align="center" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Schematics.png" width="1000"/>
 
 ***
-
-## Repository structure
-
-```
-├───3D Designs                                - Contains printed parts for the stimulator and optical components
-│   ├───Optical Components
-|   |   ├───STL renderings                    - Printing files
-|   |   └───SCAD files                        - SCAD files to be modified if need be
-│   └───Stimulator
-|      ├───STL renderings                    - Printing files
-|      └───SCAD files                        - SCAD files to be modified if need be
-|
-├───Arduino Code
-|   ├───Stimulator Code                   - Adaptable C+ code for running the stimulator
-|   └───LED drive library                 - Library to run the TLC 5947
-|
-├───Bill of Materials                         - List of necessary components and retailer suggestions
-|
-├───Datasheets                                - Contains all technical sheet for:
-|   ├───Optical Components                    - ...LEDs, Filters, Dichroic Mirrors used in the presented example
-|   ├───Stimulator                            - ...micro-controller and LED driver
-|   └───Spectrometer                          - ...device used for calibration
-|
-├───Images
-|
-├───Instruction Manual                        - Detailed manual to assemble and calibrate the stimulator
-|   └───Stimulator Calibration                - Contains calibration recordings and the adaptable jupyter notebook script to calibrate the stimulator
-|       ├───Arduino Calibration Code          - Sequence used for the calibration
-|       ├───Filters                           - Filters and dicroic mirrors spectra
-|       ├───Powermeter Recording              - Recording of the calibration sequence
-|       └───Spectrometer Recording            - Recording of the calibration sequence
-|
-├───PCB                                       - KiCad and Gerber files to modified and generate PCB for:
-│   ├───Potentiometer mounts                  - ...trimmer potentiometers that set the LED maximum brightness
-│   └───Stimulator                            - ...the stimulator itself
-|
-└───References                                - Publication used to design and conceive this model
-
-```
