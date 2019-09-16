@@ -48,8 +48,6 @@ The jumper on the top (Signal Inverter) allows the inversion of the TTL "Blankin
 
 The jumper at the bottom of the board (Voltage Divider) allows to tune down the voltage from 5 to 3.3V if the ESP is used instead of an Arduino. ESP32 unlike Arduino Nano, works on a 3.3V logic; no higher tension should be sent to this board. Since most TTL deliver 5V pulses, we selected a 220/470Ω divider to bring a 5V blanking signal into a 3.3V input. Depending on the blanking signal generator used, this divider can be modified to fit one’s personal design or bypassed by only bridging the 220Ω resistor.
 
-(Supplementary Figure S3 TESSA PICTURE)
-
 <img align="right" width="500" height="200" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/reference%20resistor%20vs%20output%20current.png">
 
 The Adafruit TLC5947 LED driver is a constant current driver configured by default to set the current level at 15mA per channel, which is virtually safe for any LED. However, one can operate at different current by replacing the on-board reference resistor with a through hole resistor. The driver is capable to deliver up to 30mA, the graph below shows the relationship between resistance and output current.
@@ -59,7 +57,7 @@ The Adafruit TLC5947 LED driver is a constant current driver configured by defau
 ****
 
 <p align="center"><h4 align="left">3 – Mounting the potentiometer</h4></p>
-<img align="right" width="300" height="192" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Potentiometer%20PCB.png">
+<img align="right" width="300" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Potentiometer%20PCB.png">
 
 In order to finely adjust each LED power, we added multiple-turn trimmer potentiometers to our design. A simple solution is to manufacture the appropriate PCB board (We provide multiple options on the [GitHub repository](https://github.com/BadenLab/Tetra-Chromatic-Stimulator/tree/master/PCB/Potentiometer%20Mounts)).
 
