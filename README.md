@@ -5,24 +5,35 @@
 
 This project is licensed under the [GNU General Public License v3.0](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/LICENSE)
 
+
+The study of colour vision with fluorescence microscopy requires precise control over the spectra of visual stimuli.
+
 Here we describe an effective, low-cost, opensource LED stimulator, designed to be used in combination with a 2-photon microscope. The design is built around an open-source development board and off-the-shelf components. It has been conceived to be assembled and used without the need for advanced electronics skills.
 
-The stimulator synchronises the light stimulation with the sample scanning in order to prevent interferences with the light emitting probe recording. Our system only requires simple electronics components to be assemble and can be combined.
 
 [Instruction Manual](https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/tree/master/Manuscript%20and%20Instruction%20Manual)
 
 ***
 
+The following design can control up to 24 spectral channels with 12 bits  linear  resolution and 25 μs temporal precision. Our system only requires simple electronics components to be assemble and can be combined.
+
 <img align="center" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Stimulator.png" width="1000"/>
 
 ***
 
-<img align="center" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Schematics.png" width="1000"/>
+The stimulator synchronises the light stimulation with the sample scanning in order to prevent interferences with the light emitting probe recording.
+
+<img align="center" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Blanking.png" width="1000"/>
 
 ***
 
-<img align="center" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Visual%20Stimulator.png" width="1000"/>
-
-***
+The following design was adjusted for the tetrachromatic zebrafish.
+Stimulating LEDs and optical filters were chosen to match the peak sensitivities of opsin spectra while avoiding overlap with the PMT detection bands.
 
 <img align="center" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Spectra.png" width="1000"/>
+
+***
+
+In this example, the light sources are combined and directed through the onjective.
+
+<img align="center" src="https://github.com/MaxZimmer/Multi-Chromatic-Stimulator/blob/master/Images/Schematics.png" width="1000"/>
