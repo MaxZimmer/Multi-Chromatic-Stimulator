@@ -229,6 +229,8 @@ In this script, one has to first modify the global parameters:
 
 .
 
+.
+
 The script then run a couple of slides to extract and smooth (Savitzky–Golay filter) the recording data.
 
 From this recording, the peak wavelength of each LED is extracted and assigned to the *Peaks[ ]* array.
