@@ -59,7 +59,7 @@
     (pad_drill 0.762)
     (pad_to_mask_clearance 0.2)
     (aux_axis_origin 0 0)
-    (visible_elements FFFFFF7F)
+    (visible_elements 7FFFFFFF)
     (pcbplotparams
       (layerselection 0x3ffff_ffffffff)
       (usegerberextensions false)
@@ -279,6 +279,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Maxime/3P_TrimPot.stp
+      (offset (xyz 3.5 3.5 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 180))
+    )
   )
 
   (module Potentiometer_THT:Potentiometer_Vishay_43_Horizontal (layer F.Cu) (tedit 5C756EB5) (tstamp 5C75DC1F)
@@ -327,6 +332,11 @@
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Maxime/3P_TrimPot.stp
+      (offset (xyz 3.5 3.5 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 180))
     )
   )
 
@@ -377,6 +387,11 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
+    (model ${KISYS3DMOD}/Maxime/3P_TrimPot.stp
+      (offset (xyz 3.5 3.5 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 180))
+    )
   )
 
   (module Potentiometer_THT:Potentiometer_Vishay_43_Horizontal (layer F.Cu) (tedit 5C756EE4) (tstamp 5C75DC5B)
@@ -425,6 +440,11 @@
       (at (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
+    )
+    (model ${KISYS3DMOD}/Maxime/3P_TrimPot.stp
+      (offset (xyz 3.5 3.5 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 180))
     )
   )
 
