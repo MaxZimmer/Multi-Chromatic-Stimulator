@@ -54,7 +54,7 @@ const int8_t array_LED4[] PROGMEM = {
 
 // The array_Time values are expressed in milliseconds
 const int16_t array_Time[] PROGMEM = {      
-100,100,100
+1,2,2
 };
 
 // // // // // // // // // // // // // // // // // // // // // // // // // // //
